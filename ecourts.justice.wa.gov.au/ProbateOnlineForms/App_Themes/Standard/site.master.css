@@ -1,0 +1,270 @@
+/*------------------------------------------------------------------------------
+| Site Master
+------------------------------------------------------------------------------*/
+body
+{
+	background-color: #FFFFFF;
+	font-family: verdana,arial,helvetica,sans-serif;
+	font-size: 8pt;
+	margin: 0px;
+	padding: 0px;
+}
+input, textarea, select
+{
+	font-family: verdana,arial,helvetica,sans-serif;
+	font-size: 8pt;
+	padding: 2px;
+}
+/*------------------------------------------------------------------------------
+| Site Master Header
+------------------------------------------------------------------------------*/
+.site-master-header
+{
+	background-color: #FEFAE2;
+	padding: 10px;
+}
+.site-master-header-logo
+{
+	background-image: url('images/logo-middle.jpg');
+	background-repeat: repeat-x;
+	height: 94px;
+}
+.site-master-header-logo-left
+{
+	background-image: url('images/logo-left.jpg');
+	background-position: top left;
+	background-repeat: no-repeat;
+	height: 94px;
+	width: 291px;
+}
+.site-master-header-logo-right
+{
+	background-image: url('images/logo-right.jpg');
+	background-position: top right;
+	background-repeat: no-repeat;
+	height: 94px;
+	width: 433px;
+}
+.site-master-header-title
+{
+	font-family: times new roman,times,serif;
+	font-size: 15pt;
+	padding: 10px 0px 10px 10px;
+}
+.site-master-header-version
+{
+	color: #666666;
+	font-family: times new roman,times,serif;
+	font-size: 10pt;
+	padding: 10px 10px 10px 0px;
+}
+
+/*------------------------------------------------------------------------------
+| Site Master Header Dev April 2012
+------------------------------------------------------------------------------*/
+
+/*Header styles*/
+
+#headerWrapper{
+	padding:0px 0px 0px 0px;
+	margin:0px;
+	width:1630px;
+	height:150px;
+	background:#97723E;
+	position:relative;
+}
+
+#headerText{
+	margin:0px;
+	color:#FFFFFF;
+	text-align:center;
+	font-size: 2.5em;
+	padding-right:200px
+}
+
+.newLogoLeft
+{
+    background-image: url('images/SupremeCourtCrestTransparent.gif');
+    background-repeat: no-repeat;
+    width:150px;
+	height:40px;
+	border-left: 30px solid #97723E;	
+	border-top:25px solid #97723E;
+
+}
+    
+
+/*------------------------------------------------------------------------------
+| Site Master Content
+------------------------------------------------------------------------------*/
+.site-master-content
+{
+	border-left: 1px solid #DEE7EF;
+	border-right: 1px solid #DEE7EF;
+	border-top: 1px solid #DEE7EF;
+	padding: 10px;
+}
+.site-master-status-provider
+{
+	padding: 0;
+	margin: 0;
+}
+.site-master-question
+{
+	background-color: #FFFFFF;
+}
+.site-master-information
+{
+	background-color: #FBF9FB;
+	border-bottom: 1px solid #EDE7EB;
+	border-top: 1px solid #EDE7EB;
+	margin-top: 10px;
+	padding: 10px 10px 0px 10px;
+}
+.site-master-control
+{
+}
+.site-master-control-left
+{
+	background-image: url('images/site-control-left.gif');
+	background-position: top left;
+	background-repeat: no-repeat;
+	height: 36px;
+	width: 6px;
+}
+.site-master-control-middle
+{
+	background-image: url('images/site-control-middle.gif');
+	background-repeat: repeat-x;
+	height: 36px;
+	vertical-align: middle;
+	padding-top: 2px;
+}
+.site-master-control-right
+{
+	background-image: url('images/site-control-right.gif');
+	background-position: top right;
+	background-repeat: no-repeat;
+	height: 36px;
+	width: 6px;
+}
+.site-master-control-progress
+{
+	color: #666666;
+	font-size: 10pt;
+	vertical-align:middle;
+}
+/*------------------------------------------------------------------------------
+| Site Master Footer
+------------------------------------------------------------------------------*/
+.site-master-footer
+{
+	font-size: 8pt;
+	padding: 10px;
+	text-align: center;
+}
+.site-master-footer a
+{
+	padding-left: 3px;
+	padding-right: 3px;
+}
+/*------------------------------------------------------------------------------
+| Site Master Question
+------------------------------------------------------------------------------*/
+.question-header
+{
+	border-bottom: solid 1px #000000;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-bottom: 10px;
+	padding-bottom: 6px;
+}
+.question-panel
+{
+	background-color: #F6F4EE;
+	border: 1px solid #EDE7EB;
+	margin-bottom: 10px;
+	padding: 6px;
+}
+.question-panel input, textarea, select
+{
+	margin-left: 10px;
+}
+.question-label
+{
+	padding-top: 6px;
+	padding-bottom: 10px;
+	vertical-align:text-top;
+}
+.question-label-divider-head
+{
+	padding-bottom: 8px;
+	vertical-align: top;
+	border-bottom: dashed 1px #EDE7EB;
+}
+.question-label-divider-next
+{
+	padding-top: 8px;
+	padding-bottom: 8px;
+	vertical-align: top;
+	border-bottom: dashed 1px #EDE7EB;
+}
+.question-label-divider-tail
+{
+	padding-top: 8px;
+	vertical-align: top;
+}
+.question-content-divider-head
+{
+	padding-bottom: 4px;
+	border-bottom: dashed 1px #EDE7EB;
+}
+.question-content-divider-next
+{
+	padding-bottom: 4px;
+	border-bottom: dashed 1px #EDE7EB;
+}
+.question-content-divider-tail
+{
+	padding-top: 8px;
+}
+/*------------------------------------------------------------------------------
+| Site Master Information
+------------------------------------------------------------------------------*/
+.information-header
+{
+	font-size: 8.5pt;
+	font-weight: bold;
+}
+
+/*------------------------------------------------------------------------------
+| Utility Classes
+------------------------------------------------------------------------------*/
+.hidden-control
+{
+	display: none;
+}
+
+/*------------------------------------------------------------------------------
+| Legal requirement for use of the adobe reader download logo
+| http://www.adobe.com/misc/linking.html#readerlogo
+------------------------------------------------------------------------------*/
+.adobe-reader-logo
+{
+	text-align: right;
+}
+.adobe-reader-logo table
+{
+	display: inline-table;
+}
+.adobe-reader-logo-requirement
+{
+	padding: 33px;
+}
+.adobe-reader-logo-text
+{
+	color: #888888;
+	font-size: 8.5pt;
+	text-align: left;
+	width: 280px;
+}

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Conditions Of Use - eCourts Portal</title>
+    <link runat="server" rel="icon" href="/eCourtsPortal/Content/images/favicon.ico" type="image/x-icon" />
+    <link href="/eCourtsPortal/Content/css?v=K2JfGMoud306LC5h2V3FYKgGNXLv16Zl3f0ZSu3rWiQ1" rel="stylesheet"/>
+
+    <link href="/eCourtsPortal/Content/kendo/css?v=21LcAz6yJGKZ1K4dFGqb9iG8El0pTERhsh3YA5RbqSM1" rel="stylesheet"/>
+
+    <link href="/eCourtsPortal/BotDetectCaptcha.ashx?get=layout-stylesheet" rel="stylesheet"/>
+
+    
+    <script src="/eCourtsPortal/bundles/jquery?v=N2YlHnRI7it2_JoqUZTYWxPtx-s61zIGkk78Q0eabPM1"></script>
+
+    <script src="/eCourtsPortal/Scripts/kendo/kendo.all.min.js"></script>
+
+    <script src="/eCourtsPortal/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+
+
+    
+    <script src="/eCourtsPortal/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1"></script>
+
+
+
+    
+</head>
+<body>
+    <div id="container-fluid">
+
+<script type="application/javascript" src="/eCourtsPortal/Scripts/Shared/ContextHelp.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-inverse brandHeaderTheme">
+    <div class="container-fluid" style="background-color:#002f5f">
+        <table>
+            <tr>
+                <td>
+                    <img src="/eCourtsPortal/Content/statecrestwhite_100px.png" height="60" alt="Western Australia State Crest" />
+                </td>
+                <td class="navbar-header">
+                    <a href="/eCourtsPortal/" class="navbar-brand">eCourts Portal <span class="brand-header">of Western Australia</span></a>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Mobile Menu button-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#brand-portal-navbar" aria-controls="brand-portal-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="brand-portal-navbar">
+            <ul class="navbar-nav ms-auto">
+                    <li><a href="/eCourtsPortal/Registration/Full">Register</a></li>
+                    <li id="loginLink-li"><a href="/eCourtsPortal/Account/Login" id="loginLink">Log in</a></li>
+
+                <li><a href="/eCourtsPortal/Home/Subscribe">Manage Subscriptions</a></li>
+                <li><a href="/eCourtsPortal/Home/Accessibility" id="accessibility-link">Accessibility</a></li>
+                <li><a href="/eCourtsPortal/Home/Help" rel="noopener noreferrer" target="_blank">Help</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="accessibility-navbar navbar" id="_header_accessibility-navbar_ID_001" role="navigation">
+    <ol class="breadcrumb px-md-4 px-sm-0" id="site-breadcrumb">
+        <li id="home" style="padding-left:0px">
+            <a class="navbar-link" href="/eCourtsPortal/" title="eCourts Portal Home" aria-label="ecourts Portal Home" style="margin:0px"><i class="bi-house-fill bi-brand" style="font-size: 1.3rem;" title="eCourts Portal Home"></i></a>
+        </li>
+    </ol>
+
+    <ul class="navbar-nav list-group-horizontal">
+        <li><a id="decreaseFont" tabindex="0" href="#"><img src="/eCourtsPortal/Content/f-small.jpg" border="0" alt="Small Text"></a></li>
+        <li><a id="resetFont" tabindex="0" href="#"><img src="/eCourtsPortal/Content/f-reset.jpg" border="0" alt="Medium Text"></a></li>
+        <li><a id="increaseFont" tabindex="0" href="#"><img src="/eCourtsPortal/Content/f-large.jpg" border="0" alt="Large Text"></a></li>
+    </ul>
+
+</div>
+
+<!-- Modal -->
+<div id="helpDeskModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Send Us a Message</h4>
+                <button type="button" onclick="clearModal();" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Subject</label>
+                                <input id="ssSubject" type="text" class="form-control" style="max-width:100%" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Comments</label>
+                                <textarea id="ssComments" class="form-control" style="max-width:100%" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="form-label text-danger">This process will capture a screenshot of your current browser screen to be included with the above information to better assist the Help Desk with your issue.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="closeModal" onclick="clearModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="sendEmail" onclick="sendHelp('/eCourtsPortal/HelpDesk/SendHelpRequest'); return;" type="button" class="btn btn-primary">Send To Help Desk</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div id="page-wrapper">
+          
+            
+            <div id="content">
+                
+                <div style="margin-top:-5px;">
+                    <div>
+                        
+
+<div class="container">
+    <div class="card well">
+        <div class="card-body">
+
+            <div class="container">
+                <h4 style="margin-left:25px;margin-bottom:25px">Conditions Of Use</h4>
+
+                <ol style="font-weight:bold;">
+                    <li>
+                        <p><b>Definitions</b></p>
+                        <p>
+                            In these Conditions of Use:
+                        </p>
+                        <p>
+                            <b>Application</b> means a specific application on this Website for which authorisation is required for the use of that application;
+                        </p>
+                        <p>  <b> Application Specific Conditions of Use</b> means the terms and conditions applying to the use of an Application;</p>
+                        <p>  <b>Conditions of Use</b> means these terms and conditions for use of this Website;</p>
+                        <p>   <b>Court, we, our </b>or <b>us</b> means any Court or Tribunal in Western Australia, its officers, employees, agents and contractors;</p>
+                        <p>   <b>Material</b> means any audio, data, document, graphics, information and video on this Website or any Application;</p>
+                        <p>   <b>Website</b> means, unless otherwise stated, the Website operating under the registered domains name of ecourts.justice.wa.gov.au and includes all Applications available on this website;</p>
+                        <p>   <b>You</b> or <b>your</b> means the person who agrees to these Conditions of Use and any Application Specific Conditions of Use, either personally or on behalf of a legal entity and includes, if acceptance is on behalf a legal entity, the legal entity's officers, partners, employees, agents and contractors; and</p>
+                        <p>   <b>User</b> means any person or other legal entity using this Website and any Application.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Failure to Agree</b></p>
+                        <p>If you do not agree to these Conditions of Use you may not use, and must leave, this Website.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Copyright</b></p>
+                        <p>
+                            Copyright in this Website and any Application and their respective Material is vested in the State of Western Australia. Apart from any fair dealing for the purposes of private study, research, customer feedback or as otherwise permitted under the Copyright Act 1968 (Cwlth), no part of this Website, an Application or any Material in either of them may be reproduced or re-used for any commercial purpose without the prior written permission of the Court. Requests for authorisation should be directed to the Executive Manager at the Court.
+                        </p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Browser Versions Supported</b></p>
+                        <p>
+                            This Website supports Chrome.
+                        </p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Cookies</b></p>
+                        <p>
+                            Certain functions on this Website require your browser to be set to allow the creation of "cookies" on your computer. Cookies are required for security reasons and to allow our systems to uniquely identify you and your computer. The Court does not use cookies to collect personal information. Personal information is only collected from this Website in accordance with our Privacy Policy
+                        </p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Statistical Information</b></p>
+                        <p>Statistical information is collected by the Court in relation to the use of this Website, which allows us to improve the Website by understanding how our customers use the Website. The information collected is described in our Privacy Policy.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Freedom of Information</b></p>
+                        <p>Refer to the FOI details on the Department of Justice's website.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Links to and from the Court's Website</b></p>
+                        <p>Permission to place a hypertext link to any page, image, or other item on this Website should be sought by contacting the Court.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Links to and from Other Websites</b></p>
+                        <p>This Website may have links to and from external Internet sites. These external information sources are provided purely for convenience and are outside the Court's control.</p>
+                        <p>The Court does not:</p>
+                        <ul>
+                            <li>
+                                endorse or provide any approval of anything obtained from other websites;
+                            </li>
+                            <li>
+                                warrant or assume any responsibility for the quality, accuracy, source, merchantability, fitness for purpose or any other aspect of anything on those websites, and you must make your own assessment regarding anything obtained from another website.
+                            </li>
+                        </ul>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Contacting the Court</b></p>
+                        <p>For enquiries regarding information in this Website please contact the relevant business area in the 'Contact Us' section. For Application specific enquiries, please use the contact details provided when you are logged on to that Application. Email enquiries and customer feedback will be answered as soon as we reasonably can.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Compliance With Laws</b></p>
+                        <p>You must comply with all State and Commonwealth laws when using this Website and any Application.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Governing Law and Jurisdiction</b></p>
+                        <p>These Conditions of Use and any Application Specific Conditions of Use are governed by and will be construed in accordance with the laws of the State of Western Australia and are subject to the exclusive jurisdiction of the Courts of Western Australia.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Accuracy of Information</b></p>
+                        <p>Material is provided on this Website on the basis that you will assess and verify the Material and any representations or statements obtained from the Website before use. Changes in circumstances, after Material is placed on this Website, may impact the accuracy of that Material. To the fullest extent permitted by law the Court is not liable to you arising from your use of or reliance on any Material or advice obtained from this Website.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Availability</b></p>
+                        <p>The Court will endeavour to have this Website and any Application available 24 hours per day, 7 days per week. You acknowledge however that the Website and any Application may become temporarily unavailable due to:</p>
+                        <ul>
+                            <li>
+                                computer, web server or software malfunction or network congestion; or
+                            </li>
+                            <li>the failure of the communication network provided by your "Internet Service Provider" or ours; or ancillary equipment failures; or</li>
+                            <li>the need to carry out scheduled maintenance; or</li>
+                            <li>if, in our opinion, a serious threat is posed to any part of the system supporting this Website or any Application; or other circumstances beyond our reasonable control.</li>
+                        </ul>
+                        <p>
+                            Therefore you should ensure that you have other means of undertaking urgent or time-sensitive transactions and obtaining information, if for any reason this Application is unavailable.
+                        </p>
+                        <p>The Court may in its sole discretion also stop providing this Website or any Application completely.</p>
+                        <p>The Court accepts no liability if this Website or any Application is temporarily or even permanently unavailable.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Changing Conditions of Use</b></p>
+                        <p>The Court reserves the right to change these Conditions of Use from time to time at its sole discretion. You must periodically check this section of the Website to see if any of the changes affect you. By your continued use of this Website you are deemed to agree to any such changes. If you do not agree to any changes you must not use and must leave this Website.</p>
+                        <br />
+                    </li>
+                </ol>
+                <br />
+                <p style="margin-left:30px;"><b>Last updated:</b> 1 July 2017</p><br />
+                <h4 style="margin-left:25px; margin-bottom:25px">Application Specific Conditions of Use</h4>
+
+                <ol style="font-weight:bold;">
+                    <li>
+                        <p><b>Additional Terms and Conditions</b></p>
+                        <p>You acknowledge that these Application Specific Conditions of Use are in addition to the Conditions of Use – Website Generally of both the Department and any relevant Court.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Failure to Agree</b></p> <p>If you do not agree to these Application Specific Conditions of Use you must stop using this Application.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Request for Access</b></p>
+                        <p>In submitting a request for access to this Application, you: acknowledge that you have read, understood and agree to the Conditions of Use and these Application Specific Conditions of Use; and agree that the information provided in your request is accurate, complete and not misleading, and that the Department may rely on that information until we receive notice of any change from you. The Department reserves the right to refuse any request made at its discretion without having to give reasons for that refusal.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Use At Your Own Risk</b></p>
+                        <p>You agree that your use of this Application is entirely at your own risk. This Application is provided on an “as is” basis, and without any representations, warranties or conditions of any kind, whether express or implied, and including without limitation implied warranties of merchantability or fitness for a particular purpose, all of which are disclaimed to the fullest extent of the law.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Compliance With Court Rules</b></p>
+                        <p>If you are using this Application to lodge a document with a Court or Tribunal you must also comply with the Acts and Rules of the relevant Court or Tribunal. Any document transmitted by you using this Application will be deemed received in accordance with the Rules of the relevant Court of Tribunal.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Use Generally</b></p>
+                        <p>When you use this Application, you must not: - make it available to unauthorised persons; - make money out of its use; or - infringe the rights of any person.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Time and Place of Sending and Receiving</b></p>
+                        <p>All interactions with the Department are deemed to take place in the State of Western Australia. Without limiting, and subject to, Clause 5 above, the time stamp of any interaction or transaction is the time of sending from or receipt by the Department’s web server(s) which are set to local time in Perth, Western Australia.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Viruses</b></p>
+                        <p> We cannot guarantee that this Application, and any Material contained in, downloaded or accessible, from it, is free from computer viruses or any other threat which may affect your software or systems. To protect your software and systems we recommend you install and implement your own system protection software. Your transmission to the Department will be examined for known viruses and other threats using the Department’s standard operating environment scanning and detection tools. Where a virus or other threat is detected in your transmission, the transmission may be rejected and will be deemed not to have occurred. Where a transmission is rejected transmission and/or transaction confirmation will not be received by you. Where a transmission failure has occurred, the Department recommends that you clean and resubmit the transmitted data. The Department is not responsible if your transaction fails for any reason.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Security of Data</b></p>
+                        <p> The Department will take all reasonable precautions to protect the data you transmit from misuse and loss and from unauthorised access, modification or disclosure, during transmission to the Department or while stored on either our web server or on the web servers of parties engaged by the Department. Our online security measures include, but are not limited to: - encrypting data sent from your computer to our systems during Internet transactions and customer access codes transmitted across networks; - employing firewalls, intrusion detection systems and virus scanning tools to prevent unauthorised persons and viruses from entering our systems; and - using dedicated secure networks or encryption when we transmit electronic data for purposes of outsourcing. Should you suspect, or become aware of, a breach of security, we ask that you immediately notify us (see “Contact Us” information) and suspend the use of all electronic communications until we are satisfied that appropriate steps have been taken to ensure the security of electronic communications with you.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Data Backups</b></p>
+                        <p>The Department undertakes electronic backup of its computer based systems for its own purposes but does not provide backup and recovery of data not required for its own purposes. We recommend that you implement your own backup and recovery facilities and procedures for data accessed from or transmitted to our Website and this Application.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Encryption</b></p>
+                        <p>Secure Sockets Layer (SSL) is used when transmitting and receiving your data to and from this Application at all times by default.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Technical Support</b></p>
+                        <p>
+                            You are responsible for your own hardware, software and internet connection to use this Application.
+                            The Department will advise you of the minimum hardware, software and internet requirements necessary to use this Application. The Department may at its discretion give you not less than 7 days notice if it alters any minimum hardware, software and internet requirements to use this Application.
+                        </p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Establishing Your Identity</b></p>
+<p>We require you to provide a unique email address that has not been registered for the portal previously. This will be used as your unique username. You will also create your own confidential password to provide authentication, the combination of which identifies you to us and authenticates you as the person who you claim to be. When access to this Application is required by more than one person within your organisation, we require each of those people to be identifiable and therefore each must provide a unique email address and create a confidential password. User accounts or confidential passwords must not be shared. You must immediately notify the Department (see “Contact Us” information) if you become aware of the loss, theft or unauthorised use of your username and confidential password, following which, the Department will, as soon as reasonably possible, disable access to the Application for that username and issue you with a replacement. You can also change your password if required.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Information About Children</b></p>
+                        <p>
+                            You must only access information about a child if your reasons for seeking access are consistent with provisions that permit disclosure, as set out in the Children’s Court Act and the Young Offenders Act; and <br />You must only use and disclose information about a child as required in the course of your duties.
+                            <br /><br />
+                    </li>
+                    <li>
+                        <p><b>Assumed Validity</b></p>
+                        <p>You agree that as an authorised user of this Application: - you are bound by any electronic communication which includes your username and password without any further inquiry on our part; we can assume that any transaction or instruction received by way of this Application activated by an authorised user’s username and confidential password originates from that authorised user and is a valid transaction or instruction which cannot be reversed. Transactions executed by an authorised user may be captured and retained by the Department on a “transaction log” and may include all instructional and financial interactions received from the authorised user. In the event of any dispute, you agree to accept the Department’s transactional log as conclusive evidence of instructional and financial interactions made by you with the Department.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Revoking Access</b></p>
+                        <p>The Department may immediately suspend or terminate your access to and use of this Application if your use of this Application: is inappropriate or unreasonable; or - menaces, creates a nuisance or harasses others or attempt to do so; or makes any denial-of-service attacks on us, or any other users or networks relating to us, or attempt to do so; or unlawfully attempts to gain access to other applications or networks which the Department uses or operates; or is in breach of the Conditions of Use or these Application Specific Conditions of Use.</p>
+                        <br />
+                    </li>
+                    <li>
+                        <p><b>Amended Terms and Conditions</b></p>
+                        <p>The Department reserves at its sole discretion the right to change these Application Specific Conditions of Use from time to time. The Department will notify you by email of any changes. By your continued use of this Application you are deemed to agree to any such changes. If you do not agree to any changes you must stop using this Application.</p>
+                        <br />
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<footer class="sticky-footer" id="_sticky-footer_ID_001">
+    <div class="container" style="text-align: center">
+        <small>
+            eCourts Portal of Western Australia v1.56.2349.0 - Supported on Chrome
+        </small>
+        <p>
+            <small>
+                <a Style="font-size:12px" href="/eCourtsPortal/">Home</a> &nbsp;   | &nbsp;
+                <a Style="font-size:12px" href="/eCourtsPortal/Home/PrivacyPolicy">Privacy Policy</a>  &nbsp; |&nbsp;
+                <a Style="font-size:12px" href="/eCourtsPortal/Home/ConditionsOfUse">Conditions Of Use</a>&nbsp;   | &nbsp;
+                <a Style="font-size:12px" href="/eCourtsPortal/Home/Feedback">Feedback</a>&nbsp;   | &nbsp;                
+                <a Style="font-size:12px" href="/eCourtsPortal/Home/Contact">Contact Us</a>                
+            </small>
+        </p>
+    </div>
+</footer>
+
+    
+    <script src="/eCourtsPortal/bundles/jqueryui?v=Au5cqEiEkjd9ZWjIlyjNwfZFyyzKgWsUm5HU_s4KWXM1"></script>
+
+    <script src="/eCourtsPortal/bundles/jqueryHelpers?v=LGFGjqOa1HjQQWrz1-W6MIjuSl4MdR81If6V9EbPMVc1"></script>
+
+    <script src="/eCourtsPortal/bundles/bootstrap?v=d6yZ-WpP9pc4q27K6zCFyRpwXOAvyD_tCDMBbKiKh641"></script>
+
+    <script src="/eCourtsPortal/bundles/dotag?v=JX_7ZAFaP3wDjJpCgnyqyiLx12yLyQj3vikKiI57Z081"></script>
+
+
+    <script src="/eCourtsPortal/bundles/Shared/html2canvas?v=EdNNr0W89Uj5VvraLSrMoQr3_yazxCadAuqbhVqqYsE1"></script>
+
+
+    
+    <script>
+        $(document).ready(function () {
+            $('#site-breadcrumb').breadcrumb().push('Conditions Of Use');
+        });
+    </script>
+
+    
+
+    <script>
+    $(document).ready(function () {
+        $('body').changeFontSize();
+
+        $(document).ajaxError(function myErrorHandler(event, xhr, ajaxOptions, thrownError) {
+
+            var url;
+            var statusErrorMap = {
+                '400': '/eCourtsPortal/Error/InvalidContent',
+                '401': '/eCourtsPortal/Error/AccessDenied',
+                '403': '/eCourtsPortal/Error/ForbiddenAccess',
+                '500': '/eCourtsPortal/Error/ExceptionOccurred',
+                '503': '/eCourtsPortal/Error/SystemUnderMaintenance'
+            };
+            if (xhr.status) {
+                url = statusErrorMap[xhr.status];
+                if (!url) {
+                    url = '/eCourtsPortal/Error/UnknownError';
+                }
+            } else if (thrownError == 'parsererror') {
+                url = '/eCourtsPortal/Error/JsonRequestFailed';
+            } else if (thrownError == 'timeout') {
+                url = '/eCourtsPortal/Error/RequestTimeout';
+            } else if (thrownError == 'abort') {
+                url = '/eCourtsPortal/Error/RequestAborted';
+            } else {
+                url = '/eCourtsPortal/Error/UnknownError';
+            }
+            top.location.href = url;
+        });
+
+    });
+
+
+    </script>
+
+</body>
+</html>

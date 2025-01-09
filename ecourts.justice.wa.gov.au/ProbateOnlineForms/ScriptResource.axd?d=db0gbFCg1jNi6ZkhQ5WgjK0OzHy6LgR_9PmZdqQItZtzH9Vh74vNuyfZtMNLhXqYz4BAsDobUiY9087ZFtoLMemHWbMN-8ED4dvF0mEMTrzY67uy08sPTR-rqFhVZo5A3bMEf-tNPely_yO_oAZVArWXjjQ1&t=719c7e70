@@ -1,0 +1,69 @@
+Type.registerNamespace("Justice.EForms.Core.Interface");
+
+Justice.EForms.Core.Interface.StatusProvider = function(element)
+{
+	Justice.EForms.Core.Interface.StatusProvider.initializeBase(this, [element]);
+	
+	this._loadDelegate = null;
+	this._endRequestDelegate = null;
+}
+
+Justice.EForms.Core.Interface.StatusProvider.prototype =
+{
+	initialize : function()
+	{
+		Justice.EForms.Core.Interface.StatusProvider.callBaseMethod(this, 'initialize');
+		this._loadDelegate = Function.createDelegate(this, this.loadHandler);
+		Sys.Application.add_load(this._loadDelegate);
+	},
+
+	dispose : function()
+	{
+		Sys.Application.remove_load(this._loadDelegate);
+		
+		if (this._endRequestDelegate != null)
+		{
+			Sys.WebForms.PageRequestManager.getInstance().remove_endRequest(this._endRequestDelegate);
+		}	
+		Justice.EForms.Core.Interface.StatusProvider.callBaseMethod(this, 'dispose');
+	},
+	
+	loadHandler : function()
+	{
+		this._endRequestDelegate = Function.createDelegate(this, this.endRequestHandler);
+		Sys.WebForms.PageRequestManager.getInstance().add_endRequest(this._endRequestDelegate);
+	},
+	
+	endRequestHandler : function(sender, args)
+	{
+		var error = args.get_error();
+		
+		if (error != null)
+		{
+			var statusProvider = this.get_element();
+			
+			if (!statusProvider.hasChildNodes())
+			{
+				var statusError = document.createElement('div');
+				statusError.setAttribute('className', 'status-provider-error');
+				statusError.setAttribute('class', 'status-provider-error');
+				statusProvider.appendChild(statusError);
+			}
+			var statusIndication = document.createElement('span');
+			
+			statusIndication.setAttribute('className', 'status-provider-indication-error');
+			statusIndication.setAttribute('class', 'status-provider-indication-error');
+			statusIndication.style.display = 'block';
+			statusIndication.innerHTML = '\u2022 <strong>Unhandled Error</strong>: '+error.message;
+			
+			statusProvider.childNodes[0].appendChild(statusIndication);
+			args.set_errorHandled(true);
+		}
+	}
+}
+
+Justice.EForms.Core.Interface.StatusProvider.registerClass(
+	'Justice.EForms.Core.Interface.StatusProvider', Sys.UI.Control);
+
+if (typeof(Sys) !== 'undefined')
+	Sys.Application.notifyScriptLoaded();

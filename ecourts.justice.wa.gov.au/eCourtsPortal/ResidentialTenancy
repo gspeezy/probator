@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Acknowledge Conditions Of Use - eCourts Portal</title>
+    <link runat="server" rel="icon" href="/eCourtsPortal/Content/images/favicon.ico" type="image/x-icon" />
+    <link href="/eCourtsPortal/Content/css?v=K2JfGMoud306LC5h2V3FYKgGNXLv16Zl3f0ZSu3rWiQ1" rel="stylesheet"/>
+
+    <link href="/eCourtsPortal/Content/kendo/css?v=21LcAz6yJGKZ1K4dFGqb9iG8El0pTERhsh3YA5RbqSM1" rel="stylesheet"/>
+
+    <link href="/eCourtsPortal/BotDetectCaptcha.ashx?get=layout-stylesheet" rel="stylesheet"/>
+
+    
+    <script src="/eCourtsPortal/bundles/jquery?v=N2YlHnRI7it2_JoqUZTYWxPtx-s61zIGkk78Q0eabPM1"></script>
+
+    <script src="/eCourtsPortal/Scripts/kendo/kendo.all.min.js"></script>
+
+    <script src="/eCourtsPortal/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+
+
+    
+    <script src="/eCourtsPortal/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1"></script>
+
+
+
+    
+</head>
+<body>
+    <div id="container-fluid">
+
+<script type="application/javascript" src="/eCourtsPortal/Scripts/Shared/ContextHelp.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-inverse brandHeaderTheme">
+    <div class="container-fluid" style="background-color:#002f5f">
+        <table>
+            <tr>
+                <td>
+                    <img src="/eCourtsPortal/Content/statecrestwhite_100px.png" height="60" alt="Western Australia State Crest" />
+                </td>
+                <td class="navbar-header">
+                    <a href="/eCourtsPortal/" class="navbar-brand">eCourts Portal <span class="brand-header">of Western Australia</span></a>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Mobile Menu button-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#brand-portal-navbar" aria-controls="brand-portal-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="brand-portal-navbar">
+            <ul class="navbar-nav ms-auto">
+                    <li><a href="/eCourtsPortal/Registration/Full">Register</a></li>
+                    <li id="loginLink-li"><a href="/eCourtsPortal/Account/Login" id="loginLink">Log in</a></li>
+
+                <li><a href="/eCourtsPortal/Home/Subscribe">Manage Subscriptions</a></li>
+                <li><a href="/eCourtsPortal/Home/Accessibility" id="accessibility-link">Accessibility</a></li>
+                <li><a href="/eCourtsPortal/Home/Help" rel="noopener noreferrer" target="_blank">Help</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="accessibility-navbar navbar" id="_header_accessibility-navbar_ID_001" role="navigation">
+    <ol class="breadcrumb px-md-4 px-sm-0" id="site-breadcrumb">
+        <li id="home" style="padding-left:0px">
+            <a class="navbar-link" href="/eCourtsPortal/" title="eCourts Portal Home" aria-label="ecourts Portal Home" style="margin:0px"><i class="bi-house-fill bi-brand" style="font-size: 1.3rem;" title="eCourts Portal Home"></i></a>
+        </li>
+    </ol>
+
+    <ul class="navbar-nav list-group-horizontal">
+        <li><a id="decreaseFont" tabindex="0" href="#"><img src="/eCourtsPortal/Content/f-small.jpg" border="0" alt="Small Text"></a></li>
+        <li><a id="resetFont" tabindex="0" href="#"><img src="/eCourtsPortal/Content/f-reset.jpg" border="0" alt="Medium Text"></a></li>
+        <li><a id="increaseFont" tabindex="0" href="#"><img src="/eCourtsPortal/Content/f-large.jpg" border="0" alt="Large Text"></a></li>
+    </ul>
+
+</div>
+
+<!-- Modal -->
+<div id="helpDeskModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Send Us a Message</h4>
+                <button type="button" onclick="clearModal();" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Subject</label>
+                                <input id="ssSubject" type="text" class="form-control" style="max-width:100%" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Comments</label>
+                                <textarea id="ssComments" class="form-control" style="max-width:100%" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="form-label text-danger">This process will capture a screenshot of your current browser screen to be included with the above information to better assist the Help Desk with your issue.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="closeModal" onclick="clearModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="sendEmail" onclick="sendHelp('/eCourtsPortal/HelpDesk/SendHelpRequest'); return;" type="button" class="btn btn-primary">Send To Help Desk</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div id="page-wrapper">
+          
+            
+            <div id="content">
+                
+                <div style="margin-top:-5px;">
+                    <div>
+                        
+
+
+<form action="/eCourtsPortal/Home/AcknowledgeTandC?ReturnUrl=%2FeCourtsPortal%2FResidentialTenancy" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="L1jTLNYo9DyRhIMiR5sdGYahPWi0QcPvDCWFcW0UurgOQqT_ST7HLu37Oviukmc0ecQdsh0FjDF_6GiDA2m62vSBauA1" /><input id="ReturnUrl" name="ReturnUrl" type="hidden" value="/eCourtsPortal/ResidentialTenancy" />    <div class="card well">
+        <div class="card-body">
+            <h4 style="margin-left:25px;margin-bottom:25px">Acknowledge Conditions Of Use</h4>
+            <div class="form-group" style="padding-left:30px">
+
+                <div class="col-md-12">
+                    <input type="checkbox" id="chkRead" />
+                    <strong>I have read and understood the <a href="/eCourtsPortal/home/ConditionsOfUse" target="_blank">Conditions of Use</a> for the eCourts Portal and agree to those conditions.</strong>
+                    <br />
+                    <br />
+                </div>
+
+                <div class="col-md-12">
+                    <input type="submit" value="Agree and Continue" id="btnAgreed" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+
+    $(document).ready(function () {
+        
+        var userAgentString = navigator.userAgent;
+        
+        var chrome = userAgentString.indexOf("Chrome") > -1;
+        var edge = userAgentString.indexOf("Edge") > -1 || userAgentString.indexOf("Edg") > -1;
+        var opera = userAgentString.indexOf("OP") > -1;
+
+        if ((chrome) && (opera)) chrome = false;
+
+        if (!chrome && !edge)
+            alert('The eCourts Portal website is not supported by this web browser.\n\nThe preferred browser is Google Chrome or Microsoft Edge.');
+
+        $('#btnAgreed').prop('disabled', true);
+        $('#chkRead').on('click', function () {
+            if ($('#chkRead').prop('checked')) {
+                $('#btnAgreed').prop('disabled', false);
+            } else {
+                $('#btnAgreed').prop('disabled', true);
+            }
+        });
+
+    })
+
+   
+</script>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<footer class="sticky-footer" id="_sticky-footer_ID_001">
+    <div class="container" style="text-align: center">
+        <small>
+            eCourts Portal of Western Australia v1.56.2349.0 - Supported on Chrome
+        </small>
+        <p>
+            <small>
+                <a Style="font-size:12px" href="/eCourtsPortal/">Home</a> &nbsp;   | &nbsp;
+                <a Style="font-size:12px" href="/eCourtsPortal/Home/PrivacyPolicy">Privacy Policy</a>  &nbsp; |&nbsp;
+                <a Style="font-size:12px" href="/eCourtsPortal/Home/ConditionsOfUse">Conditions Of Use</a>&nbsp;   | &nbsp;
+                <a Style="font-size:12px" href="/eCourtsPortal/Home/Feedback">Feedback</a>&nbsp;   | &nbsp;                
+                <a Style="font-size:12px" href="/eCourtsPortal/Home/Contact">Contact Us</a>                
+            </small>
+        </p>
+    </div>
+</footer>
+
+    
+    <script src="/eCourtsPortal/bundles/jqueryui?v=Au5cqEiEkjd9ZWjIlyjNwfZFyyzKgWsUm5HU_s4KWXM1"></script>
+
+    <script src="/eCourtsPortal/bundles/jqueryHelpers?v=LGFGjqOa1HjQQWrz1-W6MIjuSl4MdR81If6V9EbPMVc1"></script>
+
+    <script src="/eCourtsPortal/bundles/bootstrap?v=d6yZ-WpP9pc4q27K6zCFyRpwXOAvyD_tCDMBbKiKh641"></script>
+
+    <script src="/eCourtsPortal/bundles/dotag?v=JX_7ZAFaP3wDjJpCgnyqyiLx12yLyQj3vikKiI57Z081"></script>
+
+
+    <script src="/eCourtsPortal/bundles/Shared/html2canvas?v=EdNNr0W89Uj5VvraLSrMoQr3_yazxCadAuqbhVqqYsE1"></script>
+
+
+    
+    <script>
+        $(document).ready(function () {
+            $('#site-breadcrumb').breadcrumb().push('Acknowledge Conditions Of Use');
+        });
+    </script>
+
+    
+
+    <script>
+    $(document).ready(function () {
+        $('body').changeFontSize();
+
+        $(document).ajaxError(function myErrorHandler(event, xhr, ajaxOptions, thrownError) {
+
+            var url;
+            var statusErrorMap = {
+                '400': '/eCourtsPortal/Error/InvalidContent',
+                '401': '/eCourtsPortal/Error/AccessDenied',
+                '403': '/eCourtsPortal/Error/ForbiddenAccess',
+                '500': '/eCourtsPortal/Error/ExceptionOccurred',
+                '503': '/eCourtsPortal/Error/SystemUnderMaintenance'
+            };
+            if (xhr.status) {
+                url = statusErrorMap[xhr.status];
+                if (!url) {
+                    url = '/eCourtsPortal/Error/UnknownError';
+                }
+            } else if (thrownError == 'parsererror') {
+                url = '/eCourtsPortal/Error/JsonRequestFailed';
+            } else if (thrownError == 'timeout') {
+                url = '/eCourtsPortal/Error/RequestTimeout';
+            } else if (thrownError == 'abort') {
+                url = '/eCourtsPortal/Error/RequestAborted';
+            } else {
+                url = '/eCourtsPortal/Error/UnknownError';
+            }
+            top.location.href = url;
+        });
+
+    });
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="HelpNDoc Ultimate Edition 9.4.0.372">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.ico"/>
+
+  <title>Record Service on a PN</title>
+  <meta name="description" content="" /> 
+  <meta name="keywords" content="Document Lodgment,Magistrates Court">
+
+
+
+  <meta name="robots" content="noindex" />
+
+  
+  
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Record Service on a PN">
+  <meta name="twitter:description" content="">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Record Service on a PN" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="eCourts Portal Help" /> 
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendors/bootstrap-3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="vendors/bootstrap-3.4.1/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="vendors/html5shiv-3.7.3/html5shiv.min.js"></script>
+      <script src="vendors/respond-1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <!-- JsTree styles -->
+  <link href="vendors/jstree-3.3.10/themes/default/style.min.css" rel="stylesheet"/>
+
+  <!-- Hnd styles -->
+  <link href="css/layout.min.css" rel="stylesheet" />
+  <link href="css/effects.min.css" rel="stylesheet" />
+  <link href="css/theme-light-blue.min.css" rel="stylesheet" />
+  <link href="css/print.min.css" rel="stylesheet" media="print" />
+  <style type="text/css">nav { width: 350px} @media screen and (min-width:769px) { body.md-nav-expanded div#main { margin-left: 350px} body.md-nav-expanded header { padding-left: 364px} }</style>
+  <style type="text/css">.navigation #inline-toc { width: auto !important}</style>
+
+  <!-- Content style -->
+  <link href="css/hnd.content.css" rel="stylesheet" />
+
+  <style type="text/css">header {
+    background-color: #002f5f;
+}
+
+header h1 {
+    color: white;
+}
+
+nav .tab-tabs {
+    background: #002f5f;
+}
+
+nav .tab-tabs>li>a, nav .tab-tabs>li.active>a {
+    color: white;
+}
+
+nav .tab-tabs>li.active>a {
+    color: #002f5f;
+}</style>
+
+
+
+</head>
+
+<body class="md-nav-expanded">
+
+
+
+  
+
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible">Skip to main content</a>
+  </div>
+
+  <header class="headroom">
+    <button class="hnd-toggle btn btn-default">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>        
+    </button>
+    <h1>eCourts Portal Help</h1>
+    <img src="_logo.png" alt="State Crest" class="logo"/>
+  </header>
+
+  <nav id="panel-left" class="md-nav-expanded">
+    <!-- Nav tabs -->
+    <ul class="tab-tabs nav nav-tabs" role="tablist">
+      <li id="nav-close" role="presentation"> 
+        <button class="hnd-toggle btn btn-default" aria-label="close">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+      </li>
+      
+	  
+        <li role="presentation" class="tab active">
+            <a href="#contents" id="tab-contents" aria-controls="contents" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-list"></i>
+                Contents
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#index" id="tab-index" aria-controls="index" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-asterisk"></i>
+                Index
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#search" id="tab-search" aria-controls="search" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-search"></i>
+                Search
+            </a>
+        </li>
+      
+    </ul>  <!-- /Nav tabs -->
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+	  
+      <div role="tabpanel" class="tab-pane active" id="contents">
+        <div id="toc" class="tree-container unselectable"
+            data-url="_toc.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /contents-->
+      
+      <div role="tabpanel" class="tab-pane" id="index">
+        <div id="keywords" class="tree-container unselectable"
+            data-url="_keywords.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /index-->
+      
+      <div role="tabpanel" class="tab-pane" id="search">
+        <div class="search-content">
+          <div class="search-input">
+            <form id="search-form">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="input-search" name="input-search" placeholder="Search..." aria-label="Search..." />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" aria-label="Search...">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>  <!-- /search-input -->
+          <div class="search-result">
+            <div id="search-info"></div>
+            <div class="tree-container unselectable" id="search-tree"></div>
+          </div>  <!-- /search-result -->
+        </div>  <!-- /search-content -->
+      </div>  <!-- /search-->
+      
+    </div>  <!-- /Tab panes -->
+
+  </nav>
+
+  <div id="main">
+
+    <article>
+        <div id="topic-content" class="container-fluid" 
+		  data-hnd-id="RecordServiceonaPN"
+		  data-hnd-context="51"
+		  data-hnd-title="Record Service on a PN"
+		>
+            
+                <div class="navigation">
+                    <ol class="breadcrumb">
+                        <li><a href="CriminalInformation.html">Criminal Information</a></li>
+                    </ol>
+                    <div class="nav-arrows">
+                        
+                    </div>
+                </div> 
+            
+
+            <a id="main-content"></a>
+
+            
+
+            <div class="main-content">
+                
+<div class="rvps2">
+<table width="100%" style="border-color: #ffffff; border-style: solid; border-width: 1px; border-spacing: 2px;">
+ <tr style="vertical-align: top;">
+  <td style="border-width : 1px; border-color: #000000; border-style: solid; padding: 1px; border-top: none; border-right: none; border-bottom: none; border-left: none; width: 83px;">
+   <p class="rvps2"><a href="https://ecourts.justice.wa.gov.au/eCourtsPortal/" target="_blank"><img alt="" style="width : 73px; height : 54px; padding : 1px;" src="lib/StateCrestBlack.png"></a></p>
+  </td>
+  <td style="border-width : 1px; border-color: #000000; border-style: solid; padding: 1px; border-top: none; border-right: none; border-bottom: none; border-left: none; vertical-align: middle; width: 1089px;">
+   <p class="rvps2"><span class="rvts12">eCourts Portal of Western Australia - Help: Criminal Information</span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts19">Record Service on a Prosecution Notice</span></p>
+<p class="rvps5"><span class="rvts13">A Prosecuting Authority can record service on a lodged Prosecution Notice with a Court Hearing Notice, Summons or Notice to Attend.</span></p>
+<p class="rvps5"><span class="rvts6">A Prosecuting Agency may be required to re-serve an Accused Individual or Organisation with a Prosecution Notice that has already been lodged with the Court.</span></p>
+<p class="rvps8"><span class="rvts6">01. Open eCourts Portal homepage. Click on </span><span class="rvts13">Criminal Information</span><span class="rvts6">.&nbsp;</span></p>
+<p class="rvps5"><span class="rvts6">The </span><span class="rvts13">Conditions of Access</span><span class="rvts6"> page opens.</span></p>
+<p class="rvps8"><span class="rvts6">02. Select the Checkbox “</span><span class="rvts22">I have read and understood the Conditions of Access to the eCourts Portal and agree that this information will be accessed for professional purposes only</span><span class="rvts6">.”</span></p>
+<p class="rvps5"><span class="rvts6">&nbsp;</span><img alt="" style="padding : 1px;" src="lib/NewItem1008.png"></p>
+<p class="rvps8"><span class="rvts6">03. Select </span><span class="rvts13">I Agree</span><span class="rvts6">.&nbsp;</span></p>
+<p class="rvps5"><span class="rvts6">The </span><span class="rvts13">Search</span><span class="rvts6"> screen opens.&nbsp;</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1009.png"></p>
+<p class="rvps8"><span class="rvts6">04. </span><span class="rvts13">Search for Accused</span><span class="rvts6"> tab is highlighted.&nbsp;</span></p>
+<p class="rvps8"><span class="rvts6">Enter the </span><span class="rvts13">Accused details</span><span class="rvts6">.&nbsp;</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1010.png"></p>
+<ul style="text-indent: 0px; padding: 0; margin: 0 0 0 38px; list-style-position: outside; list-style-type: disc;">
+ <li class="rvps37 noindent"><span class="rvts13">SID – </span><span class="rvts6">Enter the unique SID number (WA Police).</span></li>
+ <li class="rvps37 noindent"><span class="rvts13">ICMS ID </span><span class="rvts6">– Enter the unique ICMS ID number (if known).</span></li>
+ <li class="rvps37 noindent"><span class="rvts13">Is Organisation </span><span class="rvts6">– Select the checkbox if you are searching for an organisation.</span></li>
+ <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 91px; list-style-position: outside; list-style-type: circle;">
+  <li style="text-indent: 0px" class="rvps38 noindent"><span class="rvts13">Organisation Name </span><span class="rvts6">– Enter the name of the organisation.</span></li>
+ </ul>
+ <li class="rvps37 noindent"><span class="rvts13">Family Name –</span><span class="rvts6"> Enter the surname of the accused Individual.</span></li>
+ <li class="rvps37 noindent"><span class="rvts13">Given Names –</span><span class="rvts6"> Enter the given names of the accused Individual.</span></li>
+ <li class="rvps37 noindent"><span class="rvts13">Include Aliases –</span><span class="rvts6"> Checkbox defaults to selected. Unselect if you don’t want include alias names in your search.</span></li>
+ <li class="rvps37 noindent"><span class="rvts13">Date of Birth</span><span class="rvts6"> – Enter the accused person’s date of birth to narrow down results.</span></li>
+ <li class="rvps37 noindent"><span class="rvts13">Exclude Infringements</span><span class="rvts6"> – Checkbox defaults to unselected. Select the checkbox if you want to exclude infringements in your search.</span></li>
+ <li class="rvps37 noindent"><span class="rvts13">Max Results </span><span class="rvts6">– Default to 100 search results.</span></li>
+</ul>
+<p class="rvps8"><span class="rvts6">05. Select </span><span class="rvts13">Search</span><span class="rvts6">.&nbsp;</span></p>
+<p class="rvps5"><span class="rvts6">Search results display.&nbsp;</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1011.png"></p>
+<p class="rvps8"><span class="rvts6">06. Select </span><span class="rvts13">Family Name </span><span class="rvts6">link.&nbsp;</span></p>
+<p class="rvps5"><span class="rvts6">The </span><span class="rvts13">Accused Details </span><span class="rvts6">page is displayed.&nbsp;</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1012.png"></p>
+<p class="rvps8"><span class="rvts6">07. Go down to </span><span class="rvts13">Quick Links</span><span class="rvts6">.&nbsp;</span></p>
+<p class="rvps8"><img alt="" style="padding : 1px;" src="lib/NewItem1013.png"></p>
+<p class="rvps8"><span class="rvts6">08. Select </span><span class="rvts13">Record Service of a Prosecution Notice </span><span class="rvts6">link.&nbsp;</span></p>
+<p class="rvps9"><span class="rvts13">NOTE:</span><span class="rvts6"> This link is only accessible by registered eCourts Portal prosecuting agencies.</span></p>
+<p class="rvps5"><span class="rvts6">The </span><span class="rvts13">Select a Prosecution Notice to Record Service for [Accused Name]</span><span class="rvts6"> page opens.</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1014.png"></p>
+<p class="rvps9"><span class="rvts13">NOTE:</span><span class="rvts6"> Only prosecution notices lodged by the prosecuting agency will display.</span></p>
+<p class="rvps8"><span class="rvts6">09. Select the prosecution notice to record service on. The </span><span class="rvts13">Enter Service Details</span><span class="rvts6"> page opens.</span></p>
+<p class="rvps8"><span class="rvts6">Enter the </span><span class="rvts13">Accused Service Details</span><span class="rvts6">.</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1015.png"></p>
+<ul style="text-indent: 0px; padding: 0; margin: 0 0 0 38px; list-style-position: outside; list-style-type: disc;">
+ <li class="rvps11 noindent"><span class="rvts13">Served on Surname</span><span class="rvts6"> – The surname of the Accused is automatically displayed (mandatory field)</span></li>
+ <li class="rvps11 noindent"><span class="rvts13">Served on Given Names </span><span class="rvts6">– The given names of the Accused is automatically displayed&nbsp;</span></li>
+ <li class="rvps11 noindent"><span class="rvts13">Service Date </span><span class="rvts6">– Enter the date the prosecution notice was served on the Accused (mandatory field)</span></li>
+ <li class="rvps11 noindent"><span class="rvts13">Service Time </span><span class="rvts6">– Enter the time the prosecution notice was served on the Accused (mandatory field)</span></li>
+ <li class="rvps11 noindent"><span class="rvts13">Method of Service </span><span class="rvts6">– Select an option from the dropdown box (mandatory field)</span></li>
+ <li class="rvps11 noindent"><span class="rvts13">Description </span><span class="rvts6">– A description automatically displays when the Method of Service is selected (mandatory field)</span></li>
+</ul>
+<p class="rvps9"><span class="rvts13">NOTE</span><span class="rvts6">: The </span><span class="rvts13">Description</span><span class="rvts6"> field is also an editable field</span></p>
+<ul style="text-indent: 0px; padding: 0; margin: 0 0 0 38px; list-style-position: outside; list-style-type: disc;">
+ <li class="rvps11 noindent"><span class="rvts13">Place of Service </span><span class="rvts6">– Enter the place of service (mandatory field)</span></li>
+ <li class="rvps11 noindent"><span class="rvts13">Served by Surname </span><span class="rvts6">– Enter surname of whom served the prosecution notice on the Accused (mandatory field)</span></li>
+ <li class="rvps11 noindent"><span class="rvts13">Served by Given Names </span><span class="rvts6">– Enter the given names of whom served the prosecution notice on the Accused&nbsp;</span></li>
+</ul>
+<p class="rvps8"><span class="rvts6">09A. If the prosecution notice to record service on a Children’s Court matter. &nbsp;</span></p>
+<p class="rvps8"><span class="rvts13">Who did you serve?&nbsp;</span><span class="rvts6"> Select </span><span class="rvts13">Accused, Responsible Adult or Both.</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1016.png"></p>
+<p class="rvps8"><span class="rvts6">09B. If </span><span class="rvts13">Accused</span><span class="rvts6"> is selected. Enter the </span><span class="rvts13">Accused Service Details</span><span class="rvts6">.</span></p>
+<p class="rvps8"><span class="rvts6">09C. If </span><span class="rvts13">Responsible Adult</span><span class="rvts6"> is selected. &nbsp;</span><span class="rvts13">Was Responsible Adult service successful?</span><span class="rvts6"> Select </span><span class="rvts13">Yes</span><span class="rvts6"> or </span><span class="rvts13">No</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6">If </span><span class="rvts13">Yes</span><span class="rvts6"> was selected.</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1017.png"></p>
+<ul style="text-indent: 0px; padding: 0; margin: 0 0 0 38px; list-style-position: outside; list-style-type: disc;">
+ <li class="rvps36 noindent"><span class="rvts13">Responsible Adult Name</span><span class="rvts6"> – Enter the Responsible Adults given name and surname (mandatory field)</span></li>
+ <li class="rvps22 noindent"><span class="rvts13">Service Date </span><span class="rvts6">– Enter the date the prosecution notice was served on the Responsible Adult (mandatory field)</span></li>
+ <li class="rvps22 noindent"><span class="rvts13">Service Time </span><span class="rvts6">– Enter the time the prosecution notice was served on the Responsible Adult (mandatory field)</span></li>
+ <li class="rvps22 noindent"><span class="rvts13">Method of Service </span><span class="rvts6">– Select an option from the dropdown box (mandatory field)</span></li>
+ <li class="rvps22 noindent"><span class="rvts13">Description </span><span class="rvts6">– A description automatically displays when the Method of Service is selected (mandatory field)</span></li>
+</ul>
+<p class="rvps9"><span class="rvts13">Note</span><span class="rvts6">: The </span><span class="rvts13">Description</span><span class="rvts6"> field is also an editable field.</span></p>
+<ul style="text-indent: 0px; padding: 0; margin: 0 0 0 38px; list-style-position: outside; list-style-type: disc;">
+ <li class="rvps22 noindent"><span class="rvts13">Place of Service </span><span class="rvts6">– Enter the place of service (mandatory field)</span></li>
+ <li class="rvps22 noindent"><span class="rvts13">Served by Surname </span><span class="rvts6">– Enter surname of whom served the prosecution notice on the Responsible Adult (mandatory field)</span></li>
+ <li class="rvps22 noindent"><span class="rvts13">Served by Given Names </span><span class="rvts6">– Enter the given names of whom served the prosecution notice on the Responsible Adult&nbsp;</span></li>
+</ul>
+<p class="rvps5"><span class="rvts6">If </span><span class="rvts13">No</span><span class="rvts6"> was selected. Enter the attempted service details.</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1018.png"></p>
+<ul style="text-indent: 0px; padding: 0; margin: 0 0 0 38px; list-style-position: outside; list-style-type: disc;">
+ <li class="rvps36 noindent"><span class="rvts13">Responsible Adult Name</span><span class="rvts6"> – Enter the Responsible Adults given name and surname (mandatory field)</span></li>
+ <li class="rvps36 noindent"><span class="rvts13">Attempted Service Date </span><span class="rvts6">– Enter the attempted service date (mandatory field)</span></li>
+ <li class="rvps36 noindent"><span class="rvts13">Attempted Service Time </span><span class="rvts6">– Enter the attempted service time (mandatory field)</span></li>
+ <li class="rvps36 noindent"><span class="rvts13">Served by Surname </span><span class="rvts6">– Enter surname of whom served the prosecution notice on the Accused (mandatory field)</span></li>
+ <li class="rvps36 noindent"><span class="rvts13">Served by Given Names </span><span class="rvts6">– Enter the given names of whom served the prosecution notice on the Accused&nbsp;</span></li>
+</ul>
+<p class="rvps5"><span class="rvts6">If </span><span class="rvts13">Both</span><span class="rvts6"> was selected. Enter the service details for the accused and the responsible adult.</span></p>
+<p class="rvps8"><span class="rvts6">10. &nbsp;Select </span><span class="rvts13">Lodge</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6">A confirmation message displays for a successful lodgment.&nbsp;</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1019.png"></p>
+<p class="rvps9"><span class="rvts13">Note:</span><span class="rvts6"> The </span><span class="rvts13">View Lodged Document</span><span class="rvts6"> button will display the validation message “</span><span class="rvts22">This lodgment does not produce a viewable document</span><span class="rvts6">.”</span></p>
+<p class="rvps8"><span class="rvts6">11. A prosecuting agency can view a record of this transaction by going to </span><span class="rvts13">Manage Lodgments</span><span class="rvts6">. The user can also view and recommence any saved transactions from this process. The </span><span class="rvts13">View Document</span><span class="rvts6"> button has the same message as advised in the previous step.</span></p>
+<p class="rvps5"><img alt="" style="padding : 1px;" src="lib/NewItem1020.png"></p>
+<p class="rvps5" style="break-before: always;"><span class="rvts6"><br/></span></p>
+<p class="rvps32"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts13">Links:</span></p>
+<p class="rvps2"><span class="rvts36">eCourts Portal – Lodge a Prosecution Notice&nbsp;</span></p>
+<p class="rvps2"><span class="rvts36">eCourts Portal – Lodge a Prosecution Notice – Notice to Attend – Childrens Court</span></p>
+<p class="rvps2"><span class="rvts6"></span><span class="rvts6"></span></p>
+
+            </div>
+            
+            <div id="topic_footer"><div id="topic_footer_content">Copyright &copy; 2024 by Department of Justice. All Rights Reserved.</div></div>
+        </div>  <!-- /#topic-content -->
+    </article>
+
+    <footer></footer>
+
+  </div>  <!-- /#main -->
+
+  <div class="mask" data-toggle="sm-nav-expanded"></div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="hndModal" tabindex="-1" role="dialog" aria-labelledby="hndModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="hndModalLabel"></h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary modal-btn-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Splitter -->
+  <div id="hnd-splitter" style="left: 350px"></div>  
+
+  <!-- Scripts -->
+  <script src="vendors/jquery-3.7.1/jquery.min.js"></script>
+  <script src="vendors/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+  <script src="vendors/bootstrap-3.4.1/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="vendors/markjs-8.11.1/jquery.mark.min.js"></script>
+  <script src="vendors/uri-1.19.11/uri.min.js"></script>
+  <script src="vendors/imageMapResizer-1.0.10/imageMapResizer.min.js"></script>
+  <script src="vendors/headroom-0.11.0/headroom.min.js"></script>
+  <script src="vendors/jstree-3.3.10/jstree.min.js"></script>  
+  <script src="vendors/interactjs-1.9.22/interact.min.js"></script>  
+
+  <!-- HelpNDoc scripts -->
+  <script src="js/polyfill.object.min.js"></script>
+  <script src="_translations.js"></script>
+  <script src="js/hndsd.min.js"></script>
+  <script src="js/hndse.min.js"></script>
+  <script src="js/app.min.js"></script>
+
+  <!-- Init script -->
+  <script>
+    $(function() {
+      // Create the app
+      var app = new Hnd.App({
+        searchEngineMinChars: 3
+      });
+      // Update translations
+      hnd_ut(app);
+	  // Instanciate imageMapResizer
+	  imageMapResize();
+	  // Custom JS
+	  
+      // Boot the app
+      app.Boot();
+    });
+  </script>
+
+
+
+</body>
+
+</html>
+
