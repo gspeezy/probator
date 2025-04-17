@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Probate Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <form id="multiStepForm">
+    <div class="step active" data-step="1">
+      <label>Full Name of Applicant:</label>
+      <input type="text" name="fullName" required>
+    </div>
+    <div class="step" data-step="2">
+      <label>Deceased's Full Name:</label>
+      <input type="text" name="deceasedName" required>
+    </div>
+    <!-- Add steps 3 to 9 in the same format -->
+    <div class="step" data-step="10">
+      <label>Relationship to Deceased:</label>
+      <input type="text" name="relationship" required>
+    </div>
+
+    <div class="navigation">
+      <button type="button" onclick="prevStep()">Previous</button>
+      <button type="button" onclick="nextStep()">Next</button>
+      <button type="submit" style="display:none;">Submit</button>
+    </div>
+  </form>
+
+  <script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll('.step');
+    const nextBtn = document.querySelector('button[onclick="nextStep()"]');
+    const prevBtn = document.querySelector('button[onclick="prevStep()"]');
+    const submitBtn = document.querySelector('button[type="submit"]');
+
+    function showStep(n) {
+      steps.forEach((step, i) => {
+        step.classList.toggle('active', i === n);
+      });
+      prevBtn.style.display = n > 0 ? 'inline' : 'none';
+      nextBtn.style.display = n < steps.length - 1 ? 'inline' : 'none';
+      submitBtn.style.display = n === steps.length - 1 ? 'inline' : 'none';
+    }
+
+    function nextStep() {
+      if (currentStep < steps.length - 1) currentStep++;
+      showStep(currentStep);
+    }
+
+    function prevStep() {
+      if (currentStep > 0) currentStep--;
+      showStep(currentStep);
+    }
+
+    document.getElementById('multiStepForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+      const res = await fetch('/generate-pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'application.pdf';
+      a.click();
+    });
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>
+
