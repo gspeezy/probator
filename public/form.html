@@ -53,24 +53,37 @@
       showStep(currentStep);
     }
 
-    document.getElementById('multiStepForm').addEventListener('submit', async (e) => {
+  document.getElementById('multiStepForm')
+    .addEventListener('submit', async (e) => {
       e.preventDefault();
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData.entries());
-      const res = await fetch('/generate-pdf', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'application.pdf';
-      a.click();
-    });
+      try {
+        // collect the data
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+        console.log("→ submitting:", data);
 
-    showStep(currentStep);
+        // fire the request
+        const res = await fetch('/generate-pdf', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        console.log("← response status:", res.status);
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        // download the PDF
+        const blob = await res.blob();
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement('a');
+        a.href     = url;
+        a.download = 'application.pdf';
+        a.click();
+      } catch (err) {
+        console.error("❌ PDF generation error:", err);
+        alert("Error generating PDF:\n" + err.message);
+      }
+    });
   </script>
 </body>
 </html>
