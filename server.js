@@ -1,43 +1,54 @@
 const express = require('express');
-const fs = require('fs');
+const fs = require('fs/promises');
 const path = require('path');
-const puppeteer = require('puppeteer');
-const bodyParser = require('body-parser');
 
 const app = express();
+const PORT = 3000;
+
+// Middleware to serve static files from the 'public' directory
 app.use(express.static('public'));
-app.use(bodyParser.json());
+// Middleware to parse JSON request bodies
+app.use(express.json());
 
-app.post('/generate-pdf', async (req, res) => {
-    console.log('📥  ➜  POST /generate-pdf received, body:', req.body);
-  const formData = req.body;
-
-  let template = fs.readFileSync('./templates/pdf-template.html', 'utf8');
-  for (const key in formData) {
-    const value = formData[key] || '';
-    const placeholder = `{{${key}}}`;
-    template = template.replaceAll(placeholder, value);
-  }
-
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-//PDF generation uses Puppeteer with --no-sandbox for compatibility on Linux. 
-// Consider reviewing sandboxing if migrating to production or accepting untrusted content.
-    });
-  const page = await browser.newPage();
-  await page.setContent(template, { waitUntil: 'domcontentloaded' });
-
-  const pdfBuffer = await page.pdf({ format: 'A4' });
-  await browser.close();
-
-  res.set({
-    'Content-Type': 'application/pdf',
-    'Content-Disposition': 'attachment; filename="application.pdf"',
-  });
-  res.send(pdfBuffer);
+/**
+ * @api {get} /api/questions
+ * @description API endpoint to fetch the form questions from the JSON file.
+ */
+app.get('/api/questions', async (req, res) => {
+    try {
+        console.log('API: /api/questions hit. Reading questions file.');
+        const questionsPath = path.join(__dirname, 'questions-and-logic.json');
+        const data = await fs.readFile(questionsPath, 'utf-8');
+        res.json(JSON.parse(data));
+    } catch (error) {
+        console.error('Error reading questions file:', error);
+        res.status(500).json({ error: 'Could not load form questions.' });
+    }
 });
 
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+/**
+ * @api {post} /api/submit
+ * @description API endpoint to receive the final mapped data.
+ * For now, it just logs the data. Later, this will trigger PDF generation.
+ */
+app.post('/api/submit', (req, res) => {
+    const finalData = req.body;
+    
+    console.log('-----------------------------------------');
+    console.log('✅ Final Mapped Data Received for PDF:');
+    console.log(JSON.stringify(finalData, null, 2));
+    console.log('-----------------------------------------');
+    
+    // In a future step, you would trigger Puppeteer here with `finalData`
+    
+    res.json({ 
+        status: 'success', 
+        message: 'Data received successfully. Check server console.',
+        data: finalData 
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+    console.log(`Open http://localhost:${PORT}/form.html to start the form.`);
 });

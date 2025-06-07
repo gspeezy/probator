@@ -1,90 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Probate Form</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probate Application Form</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <form id="multiStepForm">
-    <div class="step active" data-step="1">
-      <label>Full Name of Applicant:</label>
-      <input type="text" name="fullName" required>
+    <h1>Probate Application</h1>
+    <div id="form-container">
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+
+        <h2 id="question-text">Loading...</h2>
+        <div id="response-area">
+            <!-- Input fields will be dynamically generated here -->
+        </div>
+
+        <div id="navigation-buttons">
+            <button id="prev-btn" class="nav-btn">Previous</button>
+            <button id="next-btn" class="nav-btn">Next</button>
+        </div>
+        
+        <div id="completion-message" style="display: none;">
+            <h2>Thank you!</h2>
+            <p>Your data has been submitted. You can see the final JSON object in the server's console log.</p>
+        </div>
     </div>
-    <div class="step" data-step="2">
-      <label>Deceased's Full Name:</label>
-      <input type="text" name="deceasedName" required>
-    </div>
-    <!-- Add steps 3 to 9 in the same format -->
-    <div class="step" data-step="10">
-      <label>Relationship to Deceased:</label>
-      <input type="text" name="relationship" required>
-    </div>
 
-    <div class="navigation">
-      <button type="button" onclick="prevStep()">Previous</button>
-      <button type="button" onclick="nextStep()">Next</button>
-      <button type="submit" style="display:none;">Submit</button>
-    </div>
-  </form>
-
-  <script>
-    let currentStep = 0;
-    const steps = document.querySelectorAll('.step');
-    const nextBtn = document.querySelector('button[onclick="nextStep()"]');
-    const prevBtn = document.querySelector('button[onclick="prevStep()"]');
-    const submitBtn = document.querySelector('button[type="submit"]');
-
-    function showStep(n) {
-      steps.forEach((step, i) => {
-        step.classList.toggle('active', i === n);
-      });
-      prevBtn.style.display = n > 0 ? 'inline' : 'none';
-      nextBtn.style.display = n < steps.length - 1 ? 'inline' : 'none';
-      submitBtn.style.display = n === steps.length - 1 ? 'inline' : 'none';
-    }
-
-    function nextStep() {
-      if (currentStep < steps.length - 1) currentStep++;
-      showStep(currentStep);
-    }
-
-    function prevStep() {
-      if (currentStep > 0) currentStep--;
-      showStep(currentStep);
-    }
-
-  document.getElementById('multiStepForm')
-    .addEventListener('submit', async (e) => {
-      e.preventDefault();
-      try {
-        // collect the data
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData.entries());
-        console.log("→ submitting:", data);
-
-        // fire the request
-        const res = await fetch('/generate-pdf', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        console.log("← response status:", res.status);
-
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-        // download the PDF
-        const blob = await res.blob();
-        const url  = URL.createObjectURL(blob);
-        const a    = document.createElement('a');
-        a.href     = url;
-        a.download = 'application.pdf';
-        a.click();
-      } catch (err) {
-        console.error("❌ PDF generation error:", err);
-        alert("Error generating PDF:\n" + err.message);
-      }
-    });
-  </script>
+    <script src="form.js"></script>
 </body>
 </html>
 
