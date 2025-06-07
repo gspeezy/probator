@@ -11,7 +11,7 @@
     {
         "question_number": "2",
         "question_text": "Does this name (the deceased's correct full legal name) exactly match the name as stated in the will?",
-        "response_type": "radio:Yes/No",
+        "response_type": "radio: Yes/No",
         "validation": "none",
         "conditional_logic": "if Yes skip to Q3, if No go to Q2a",
         "maps_to_pdf": "if No then PR7: deceased_name_discrepancy (insert conditional text: named in the will as {{deceased_fullname_in_will}})",
@@ -38,7 +38,7 @@
     {
         "question_number": "4",
         "question_text": "Does the will state a different town/city for the deceased's place of residence or address?",
-        "response_type": "radio:Yes/No",
+        "response_type": "radio: Yes/No",
         "validation": "none",
         "conditional_logic": "if Yes go to Q4a, if No skip to Q5",
         "maps_to_pdf": "if Yes then PR7: deceased_residence_discrepancy (insert conditional text: formerly of {{former_will_address}})",
@@ -128,7 +128,7 @@
     {
         "question_number": "11",
         "question_text": "Does this name (the first-named executor's correct full legal name) exactly match the name as stated in the will?",
-        "response_type": "radio:Yes/No",
+        "response_type": "radio: Yes/No",
         "validation": "none",
         "conditional_logic": "if Yes skip to Q12, if No go to Q11a",
         "maps_to_pdf": "if No then PR7: executor1_name_discrepancy (conditional text: 'named in the will as {{executor_fullname_in_will}}')",
@@ -155,7 +155,7 @@
     {
         "question_number": "13",
         "question_text": "Does the will state a different town/city for the first-named executor's address?",
-        "response_type": "radio:Yes/No",
+        "response_type": "radio: Yes/No",
         "validation": "none",
         "conditional_logic": "if Yes go to Q13a, if No skip to Q14",
         "maps_to_pdf": "if Yes then PR7: executor1_residence_discrepancy (insert conditional text: formerly of {{executor1_former_address}})",
