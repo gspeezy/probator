@@ -11,9 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- State Management ---
     let allQuestions = []; // To store all questions from JSON
     let questionMap = new Map(); // For quick lookup of question by number
-    let currentQuestionIndex = 0; // The index in the allQuestions array
+    let currentPageIndex = 0; // The current page index
     let answers = {}; // { "question_number": "user_answer" }
-    let navigationHistory = []; // Stack to keep track of visited question indices for "Previous" button
+    let visitedPages = []; // Stack to keep track of visited pages for "Previous" button
+    
+    // Define question groupings by page
+    const pageGroups = [
+        ['1', '2', '2a'],     // Page 1
+        ['3', '4', '4a'],     // Page 2
+        ['5', '6', '6a'],     // Page 3
+        ['7', '8'],           // Page 4
+        ['9', '9a'],          // Page 5
+        ['10', '11', '11a'],  // Page 6
+        ['12', '13', '13a'],  // Page 7
+        ['14', '15', '15a']   // Page 8
+    ];
 
     // --- Main Initialization ---
     async function initializeForm() {
@@ -26,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             allQuestions.forEach(q => questionMap.set(q.question_number, q));
 
             if (allQuestions.length > 0) {
-                renderQuestion(0);
+                renderPage(0);
             } else {
                 questionTextEl.textContent = "No questions found.";
             }
@@ -37,132 +49,161 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Rendering Logic ---
-    function renderQuestion(index) {
-        currentQuestionIndex = index;
-        const question = allQuestions[index];
-        if (!question) return;
+    function renderPage(pageIndex) {
+        currentPageIndex = pageIndex;
+        if (pageIndex >= pageGroups.length) return;
 
-        questionTextEl.textContent = question.question_text;
-        responseAreaEl.innerHTML = ''; // Clear previous input
+        const currentPageQuestions = pageGroups[pageIndex];
+        responseAreaEl.innerHTML = ''; // Clear previous inputs
 
-        // Restore saved answer if it exists
-        const savedAnswer = answers[question.question_number];
+        // Create a container for all questions on this page
+        const pageContainer = document.createElement('div');
+        pageContainer.className = 'page-container';
 
-        // Generate input based on response_type
-        switch (question.response_type.split(':')[0]) {
-            case 'text':
-            case 'number':
-            case 'date':
-                const input = document.createElement('input');
-                input.type = question.response_type;
-                input.id = `q_${question.question_number}`;
-                input.name = `q_${question.question_number}`;
-                if (savedAnswer) input.value = savedAnswer;
-                responseAreaEl.appendChild(input);
-                break;
-            case 'radio':
-                const options = question.response_type.split(':')[1].split('/');
-                options.forEach(option => {
-                    const label = document.createElement('label');
-                    const radio = document.createElement('input');
-                    radio.type = 'radio';
-                    radio.name = `q_${question.question_number}`;
-                    radio.value = option;
-                    if (savedAnswer === option) radio.checked = true;
-                    label.appendChild(radio);
-                    label.appendChild(document.createTextNode(` ${option}`));
-                    responseAreaEl.appendChild(label);
-                    responseAreaEl.appendChild(document.createElement('br'));
-                });
-                break;
-        }
+        currentPageQuestions.forEach((questionNumber, index) => {
+            const question = questionMap.get(questionNumber);
+            if (!question) return;
+
+            // Check if this question should be shown based on conditional logic
+            if (!shouldShowQuestion(questionNumber)) return;
+
+            // Create question container
+            const questionContainer = document.createElement('div');
+            questionContainer.className = 'question-container';
+            questionContainer.style.marginBottom = '2rem';
+
+            // Question text
+            const questionTitle = document.createElement('h3');
+            questionTitle.textContent = `${questionNumber}. ${question.question_text}`;
+            questionTitle.style.marginBottom = '1rem';
+            questionTitle.style.color = '#2c3e50';
+            questionContainer.appendChild(questionTitle);
+
+            // Input area for this question
+            const inputContainer = document.createElement('div');
+            inputContainer.className = 'input-container';
+
+            // Restore saved answer if it exists
+            const savedAnswer = answers[question.question_number];
+
+            // Generate input based on response_type
+            switch (question.response_type.split(':')[0]) {
+                case 'text':
+                case 'number':
+                case 'date':
+                    const input = document.createElement('input');
+                    input.type = question.response_type;
+                    input.id = `q_${question.question_number}`;
+                    input.name = `q_${question.question_number}`;
+                    if (savedAnswer) input.value = savedAnswer;
+                    inputContainer.appendChild(input);
+                    break;
+                case 'radio':
+                    const options = question.response_type.split(':')[1].split('/');
+                    options.forEach(option => {
+                        const label = document.createElement('label');
+                        const radio = document.createElement('input');
+                        radio.type = 'radio';
+                        radio.name = `q_${question.question_number}`;
+                        radio.value = option;
+                        if (savedAnswer === option) radio.checked = true;
+                        label.appendChild(radio);
+                        label.appendChild(document.createTextNode(` ${option}`));
+                        inputContainer.appendChild(label);
+                        inputContainer.appendChild(document.createElement('br'));
+                    });
+                    break;
+            }
+
+            questionContainer.appendChild(inputContainer);
+            pageContainer.appendChild(questionContainer);
+        });
+
+        // Update page title
+        questionTextEl.textContent = `Page ${pageIndex + 1} of ${pageGroups.length}`;
+
+        responseAreaEl.appendChild(pageContainer);
         updateNavigation();
+    }
+
+    function shouldShowQuestion(questionNumber) {
+        // Check conditional logic to determine if question should be shown
+        const question = questionMap.get(questionNumber);
+        if (!question || !question.conditional_logic || question.conditional_logic === 'none') {
+            return true;
+        }
+
+        // Handle specific conditional cases
+        if (questionNumber === '2a') {
+            return answers['2'] === 'No';
+        }
+        if (questionNumber === '4a') {
+            return answers['4'] === 'Yes';
+        }
+        if (questionNumber === '6a') {
+            return answers['6'] === 'Yes';
+        }
+        if (questionNumber === '9a') {
+            return answers['9'] && parseInt(answers['9']) > 1;
+        }
+        if (questionNumber === '11a') {
+            return answers['11'] === 'No';
+        }
+        if (questionNumber === '13a') {
+            return answers['13'] === 'Yes';
+        }
+        if (questionNumber === '15a') {
+            return answers['15'] === 'Yes';
+        }
+
+        return true;
     }
 
     // --- Navigation and State Update ---
     function updateNavigation() {
         // Show/hide previous button
-        prevBtn.style.display = navigationHistory.length > 0 ? 'inline-block' : 'none';
+        prevBtn.style.display = visitedPages.length > 0 ? 'inline-block' : 'none';
 
         // Update progress bar
-        const totalPotentialSteps = allQuestions.length;
-        // A more accurate progress would be complex due to branching, so we use a simple percentage
-        const progressPercentage = ((navigationHistory.length + 1) / totalPotentialSteps) * 100;
+        const progressPercentage = ((currentPageIndex + 1) / pageGroups.length) * 100;
         progressBar.style.width = `${progressPercentage}%`;
 
-        // Update next button text to "Finish" on the last logical step
-        const nextIndex = getNextQuestionIndex(false); // Peek at the next index without saving
-        nextBtn.textContent = (nextIndex === -1) ? 'Finish' : 'Next';
+        // Update next button text to "Finish" on the last page
+        nextBtn.textContent = (currentPageIndex === pageGroups.length - 1) ? 'Finish' : 'Next';
     }
 
-    function saveCurrentAnswer() {
-        const question = allQuestions[currentQuestionIndex];
-        const qNum = question.question_number;
-        let answer = '';
-        const input = document.querySelector(`[name="q_${qNum}"]`);
+    function saveCurrentPageAnswers() {
+        const currentPageQuestions = pageGroups[currentPageIndex];
         
-        if (input.type === 'radio') {
-            const checkedRadio = document.querySelector(`[name="q_${qNum}"]:checked`);
-            answer = checkedRadio ? checkedRadio.value : null;
-        } else {
-            answer = input.value;
-        }
-
-        if (answer !== null && answer.trim() !== '') {
-            answers[qNum] = answer;
-        } else {
-            delete answers[qNum]; // Remove if empty
-        }
-    }
-
-    // --- Conditional Logic ---
-    function getNextQuestionIndex(saveAnswer = true) {
-        if (saveAnswer) {
-            saveCurrentAnswer();
-        }
-        
-        const question = allQuestions[currentQuestionIndex];
-        const answer = answers[question.question_number];
-        const logic = question.conditional_logic;
-
-        if (logic === 'none') {
-            return currentQuestionIndex + 1 < allQuestions.length ? currentQuestionIndex + 1 : -1;
-        }
-
-        // Parse complex logic: "if Yes skip to Q3, if No go to Q2a"
-        const conditions = logic.split(',').map(c => c.trim());
-        for (const condition of conditions) {
-            const parts = condition.match(/if\s(.+?)\s(skip to|go to)\sQ(.+)/);
-            if (parts) {
-                let conditionValue = parts[1];
-                const targetQNum = parts[3];
-
-                // Handle different condition types (e.g., "Yes", "=1")
-                let match = false;
-                if (conditionValue.startsWith('=')) {
-                    match = (answer == conditionValue.substring(1));
-                } else {
-                    match = (answer === conditionValue);
-                }
-
-                if (match) {
-                    const targetIndex = allQuestions.findIndex(q => q.question_number === targetQNum);
-                    return targetIndex;
-                }
+        currentPageQuestions.forEach(questionNumber => {
+            if (!shouldShowQuestion(questionNumber)) return;
+            
+            const input = document.querySelector(`[name="q_${questionNumber}"]`);
+            if (!input) return;
+            
+            let answer = '';
+            if (input.type === 'radio') {
+                const checkedRadio = document.querySelector(`[name="q_${questionNumber}"]:checked`);
+                answer = checkedRadio ? checkedRadio.value : null;
+            } else {
+                answer = input.value;
             }
-        }
 
-        // Default: go to the next question in the array if no condition matched
-        return currentQuestionIndex + 1 < allQuestions.length ? currentQuestionIndex + 1 : -1;
+            if (answer !== null && answer.trim() !== '') {
+                answers[questionNumber] = answer;
+            } else {
+                delete answers[questionNumber]; // Remove if empty
+            }
+        });
     }
 
     // --- Event Handlers ---
     nextBtn.addEventListener('click', () => {
-        const nextIndex = getNextQuestionIndex(true);
+        saveCurrentPageAnswers();
 
-        if (nextIndex !== -1) {
-            navigationHistory.push(currentQuestionIndex); // Add current to history before moving
-            renderQuestion(nextIndex);
+        if (currentPageIndex < pageGroups.length - 1) {
+            visitedPages.push(currentPageIndex); // Add current page to history before moving
+            renderPage(currentPageIndex + 1);
         } else {
             // This is the "Finish" button action
             submitForm();
@@ -170,9 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     prevBtn.addEventListener('click', () => {
-        if (navigationHistory.length > 0) {
-            const lastIndex = navigationHistory.pop();
-            renderQuestion(lastIndex);
+        if (visitedPages.length > 0) {
+            const lastPageIndex = visitedPages.pop();
+            renderPage(lastPageIndex);
         }
     });
 
