@@ -7,21 +7,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Probate Application</h1>
     <div id="form-container">
-        <div id="progress-bar-container">
-            <div id="progress-bar"></div>
-        </div>
+        <header>
+            <h1>Probate Application</h1>
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+        </header>
 
-        <h2 id="question-text">Loading...</h2>
-        <div id="response-area">
-            <!-- Input fields will be dynamically generated here -->
-        </div>
+        <main id="question-section">
+            <h2 id="question-text">Loading...</h2>
+            <div id="response-area">
+                <!-- Input fields will be dynamically generated here -->
+            </div>
+        </main>
 
-        <div id="navigation-buttons">
+        <footer id="navigation-buttons">
             <button id="prev-btn" class="nav-btn">Previous</button>
             <button id="next-btn" class="nav-btn">Next</button>
-        </div>
+        </footer>
         
         <div id="completion-message" style="display: none;">
             <h2>Thank you!</h2>
@@ -32,4 +36,5 @@
     <script src="form.js"></script>
 </body>
 </html>
+
 
