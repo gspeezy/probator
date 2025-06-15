@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,13 +16,12 @@
         }
         .court-details {
             text-align: center;
+            font-weight: bold;
             margin-bottom: 40px;
         }
         .estate-title {
             text-align: center;
-            font-weight: bold;
             margin: 30px 0;
-            text-decoration: underline;
         }
         .paragraph {
             margin-bottom: 20px;
@@ -42,7 +40,6 @@
             border-bottom: 1px solid black;
             width: 200px;
             display: inline-block;
-            margin-left: 20px;
         }
         .date-fields {
             margin: 40px 0;
@@ -52,6 +49,9 @@
             width: 100px;
             display: inline-block;
             margin: 0 10px;
+        }
+        .page-two {
+            margin-top: 60px;
         }
     </style>
 </head>
@@ -64,11 +64,11 @@
         Wellington REGISTRY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
     </div>
     
-    <div class="estate-title">
-        IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}}, of {{deceased_residence}} {{deceased_residence_discrepancy}}{{former_will_address}}, {{deceased_occupation}} {{deceased_occupation_discrepancy}}{{former_will_occupation}}, Deceased
+    <div class="estate-title" style="text-align: left;">
+        IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}} of {{deceased_residence}} {{deceased_residence_discrepancy}}{{former_will_address}}, {{deceased_occupation}} {{deceased_occupation_discrepancy}}{{former_will_occupation}}, Deceased
     </div>
     
-    <div style="margin-top: 120px; margin-bottom: 60px;">
+    <div style="margin-top: 150px; margin-bottom: 60px;">
         &nbsp;
     </div>
     
@@ -76,7 +76,7 @@
         <strong>PROBATE IN COMMON FORM</strong>
     </div>
     
-    <div style="margin-top: 120px; margin-bottom: 60px;">
+    <div style="margin-top: 300px; margin-bottom: 60px;">
         &nbsp;
     </div>
     
@@ -84,7 +84,7 @@
         &nbsp;
     </div>
     
-    <div style="margin-top: 40px; text-align: center;">
+    <div style="margin-top: 10px; text-align: center;">
         Firm Name<br>
         Telephone and Fax Numbers<br>
         Name of person handling the matter
@@ -92,42 +92,46 @@
     
     <div style="page-break-after: always;"></div>
     
-    <div class="header">
-        IN THE HIGH COURT OF NEW ZEALAND
-    </div>
-    
-    <div class="court-details">
-        Wellington REGISTRY<br>
-        CIV. ____________-2025
-    </div>
-    
-    <div class="estate-title">
-        IN THE ESTATE of {{deceased_fullname}}, of {{deceased_residence}}{{deceased_residence_discrepancy}}{{former_will_address}}, {{deceased_occupation}}{{deceased_occupation_discrepancy}}{{former_will_occupation}} Deceased
-    </div>
-    
-    <div class="paragraph">
-        <span class="paragraph-number">1.</span>
-        The deceased, {{deceased_fullname}}{{deceased_name_discrepancy}}{{deceased_fullname_in_will}}, died at {{placeofdeath}}, New Zealand on or about {{dateofdeath}} leaving a will. A copy is attached.
-    </div>
-    
-    <div class="paragraph">
-        <span class="paragraph-number">2.</span>
-        The will was proved before the Registrar/Senior Deputy Registrar in chambers acting under rule 27.14 of the High Court Rules and probate of the will was granted today.
-    </div>
-    
-    <div class="paragraph">
-        <span class="paragraph-number">3.</span>
-        This probate document appoints {{executor1_fullname}}{{executor1_name_discrepancy}}{{executor1_fullname_in_will}} of {{executor1_residence}}{{executor1_residence_discrepancy}}{{executor1_former_address}}, {{executor1_occupation}}{{executor1_occupation_discrepancy}}{{executor1_former_occupation}}, the {{single/plural_executors}} named in the will as the {{single/plural_administrators}} of the deceased's estate.
-    </div>
-    
-    <div class="date-fields">
-        DATED this <span class="date-field"></span> day of <span class="date-field"></span> 20<span class="date-field"></span>
-    </div>
-    
-    <div class="signature-section">
-        <span class="signature-line"></span><br>
-        (Deputy) Registrar
+    <div class="page-two">
+        <div class="header" style="text-align: left;">
+            IN THE HIGH COURT OF NEW ZEALAND
+        </div>
+        
+        <div class="court-details" style="text-align: left;">
+            Wellington REGISTRY<br>
+        </div>
+        
+        <div class="estate-title" style="text-align: left;">
+            IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}} of {{deceased_residence}}{{deceased_residence_discrepancy}}{{former_will_address}}, {{deceased_occupation}}{{deceased_occupation_discrepancy}}{{former_will_occupation}}, Deceased
+        </div>
+        
+        <div class="paragraph">
+            <span class="paragraph-number">1.</span>
+            The deceased, {{deceased_fullname}}{{deceased_name_discrepancy}}{{deceased_fullname_in_will}}, died at {{placeofdeath}}, New Zealand on or about {{dateofdeath}} leaving a will. A copy is attached.
+        </div>
+        
+        <div class="paragraph">
+            <span class="paragraph-number">2.</span>
+            The will was proved before the Registrar/Senior Deputy Registrar in chambers acting under rule 27.14 of the High Court Rules and probate of the will was granted today.
+        </div>
+        
+        <div class="paragraph">
+            <span class="paragraph-number">3.</span>
+            This probate document appoints {{executor1_fullname}}{{executor1_name_discrepancy}}{{executor1_fullname_in_will}} of {{executor1_residence}}{{executor1_residence_discrepancy}}{{executor1_former_address}}, {{executor1_occupation}}{{executor1_occupation_discrepancy}}{{executor1_former_occupation}}, the {{single/plural_executors}} named in the will as the {{single/plural_administrators}} of the deceased's estate.
+        </div>
+        
+        <div class="date-fields">
+            DATED this <span class="date-field"></span> day of <span class="date-field"></span> <span id="current-year"></span>
+        </div>
+        
+        <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        </script>
+        
+        <div class="signature-section">
+            <span class="signature-line"></span><br>
+            (Deputy) Registrar
+        </div>
     </div>
 </body>
 </html>
-
