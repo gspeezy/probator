@@ -11,7 +11,7 @@ async function generateTestPDF() {
     deceased_occupation: "Engineer",
     former_will_occupation: "Doctor",
     placeofdeath: "Auckland",
-    dateofdeath: "1st of January 2025",
+    dateofdeath: "01/01/2025",
     executor1_fullname: "Jaheim Smith",
     executor1_fullname_in_will: "Jaheim Jahron Smith",
     executor1_residence: "Queenstown",
