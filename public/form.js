@@ -133,30 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return true;
         }
 
-        // Handle specific conditional cases
-        if (questionNumber === '2a') {
-            return answers['2'] === 'No';
-        }
-        if (questionNumber === '4a') {
-            return answers['4'] === 'Yes';
-        }
-        if (questionNumber === '6a') {
-            return answers['6'] === 'Yes';
-        }
-        if (questionNumber === '9a') {
-            return answers['9'] && parseInt(answers['9']) > 1;
-        }
-        if (questionNumber === '11a') {
-            return answers['11'] === 'No';
-        }
-        if (questionNumber === '13a') {
-            return answers['13'] === 'Yes';
-        }
-        if (questionNumber === '15a') {
-            return answers['15'] === 'Yes';
-        }
-
-        return true;
     }
 
     // --- Navigation and State Update ---
