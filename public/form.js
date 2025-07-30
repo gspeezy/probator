@@ -206,27 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 pdfData[key] = answer;
             }
 
-            // Conditional mapping: "if No then PR7: deceased_name_discrepancy (insert conditional text: {{...}})"
-            if (mappingStr.startsWith('if No then') && answer === 'No') {
-                const match = mappingStr.match(/PR7:\s*([a-zA-Z_]+)\s*\(insert conditional text:\s*(.+)\)/);
-                if (match) {
-                    const key = match[1];
-                    let text = match[2];
-                    
-                    // Replace placeholders in the text, e.g., "{{deceased_fullname_in_will}}"
-                    const placeholderMatch = text.match(/{{(.+?)}}/);
-                    if (placeholderMatch) {
-                        const subQKey = placeholderMatch[1]; // e.g., "deceased_fullname_in_will"
-                        // Find the question that maps to this key
-                        const subQ = allQuestions.find(q => q.maps_to_pdf.includes(subQKey));
-                        if (subQ && answers[subQ.question_number]) {
-                            text = text.replace(placeholderMatch[0], answers[subQ.question_number]);
-                        }
-                    }
-                    pdfData[key] = text;
-                }
-            }
-
         }
         return pdfData;
     }
