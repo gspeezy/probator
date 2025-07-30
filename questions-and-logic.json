@@ -9,24 +9,6 @@
         "notes": ""
     },
     {
-        "question_number": "2",
-        "question_text": "Does this name (the deceased's correct full legal name) exactly match the name as stated in the will?",
-        "response_type": "radio: Yes/No",
-        "validation": "none",
-        "conditional_logic": "if Yes skip to Q3, if No go to Q2a",
-        "maps_to_pdf": "if No then PR7: deceased_name_discrepancy (insert conditional text: named in the will as {{deceased_fullname_in_will}})",
-        "notes": ""
-    },
-    {
-        "question_number": "2a",
-        "question_text": "What is the deceased person's full name (as recorded on the will)?",
-        "response_type": "text",
-        "validation": "non-empty",
-        "conditional_logic": "none",
-        "maps_to_pdf": "PR7:deceased_fullname_in_will",
-        "notes": "Record exactly as appears in will"
-    },
-    {
         "question_number": "3",
         "question_text": "In what town/city did the deceased usually live at the time of death?",
         "response_type": "text",
@@ -36,48 +18,12 @@
         "notes": ""
     },
     {
-        "question_number": "4",
-        "question_text": "Does the will state a different town/city for the deceased's place of residence or address?",
-        "response_type": "radio: Yes/No",
-        "validation": "none",
-        "conditional_logic": "if Yes go to Q4a, if No skip to Q5",
-        "maps_to_pdf": "if Yes then PR7: deceased_residence_discrepancy (insert conditional text: formerly of {{former_will_address}})",
-        "notes": "If the will does not state a residence/address, answer: No. If the street address is different but the town/city is still the same, answer: No"
-    },
-    {
-        "question_number": "4a",
-        "question_text": "What is the deceased's place of residence (exactly as stated in the will)?",
-        "response_type": "text",
-        "validation": "non-empty",
-        "conditional_logic": "none",
-        "maps_to_pdf": "PR7: former_will_address",
-        "notes": ""
-    },
-    {
         "question_number": "5",
         "question_text": "Please confirm the deceased's occupation at time of death? (if retired, state: retired)",
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
         "maps_to_pdf": "PR7: deceased_occupation",
-        "notes": ""
-    },
-    {
-        "question_number": "6",
-        "question_text": "Does the will state a different occupation for the deceased?",
-        "response_type": "radio: Yes/No",
-        "validation": "none",
-        "conditional_logic": "if Yes go to Q6a, if No skip to Q7",
-        "maps_to_pdf": "if Yes then PR7: deceased_occupation_discrepancy (insert conditional text: formerly {{former_will_occupation}})",
-        "notes": "If the will does not state an occupation, answer: No"
-    },
-    {
-        "question_number": "6a",
-        "question_text": "What is the deceased's occupation as recorded on the will?",
-        "response_type": "text",
-        "validation": "non-empty",
-        "conditional_logic": "none",
-        "maps_to_pdf": "PR7: former_will_occupation",
         "notes": ""
     },
     {
@@ -99,24 +45,6 @@
         "notes": ""
     },
     {
-        "question_number": "9",
-        "question_text": "How many executors are named in the will?",
-        "response_type": "number",
-        "validation": "positive integer",
-        "conditional_logic": "if=1 skip to Q10, if 1< got to Q9a. If=1 then remove all text stating 'first-named' from questions 10-15a.",
-        "maps_to_pdf": "PR7: single/plural_administrators (if=1 then insert 'administrator', if 1< then insert 'administrators'). PR7: single/plural_executors (if=1 then insert 'executor', if 1< then insert 'executors')",
-        "notes": ""
-    },
-    {
-        "question_number": "9a",
-        "question_text": "Are all the named executors willing and able to act?",
-        "response_type": "radio: Yes/No",
-        "validation": "If No then display error message: 'This complicates your application and means this service may not be appropriate for you. We advise you speak to a lawyer regarding this probate application.'",
-        "conditional_logic": "none",
-        "maps_to_pdf": "",
-        "notes": ""
-    },
-    {
         "question_number": "10",
         "question_text": "What is the first-named executor's correct full legal name?",
         "response_type": "text",
@@ -124,24 +52,6 @@
         "conditional_logic": "none",
         "maps_to_pdf": "PR7:executor1_fullname",
         "notes": "Please provide the details for the executors (if more than one named in the will) in the SAME ORDER as they appear in the will"
-    },
-    {
-        "question_number": "11",
-        "question_text": "Does this name (the first-named executor's correct full legal name) exactly match the name as stated in the will?",
-        "response_type": "radio: Yes/No",
-        "validation": "none",
-        "conditional_logic": "if Yes skip to Q12, if No go to Q11a",
-        "maps_to_pdf": "if No then PR7: executor1_name_discrepancy (conditional text: 'named in the will as {{executor_fullname_in_will}}')",
-        "notes": ""
-    },
-    {
-        "question_number": "11a",
-        "question_text": "What is the first-named executor's full name (as recorded on the will)?",
-        "response_type": "text",
-        "validation": "non-empty",
-        "conditional_logic": "none",
-        "maps_to_pdf": "PR7:executor1_fullname_in_will",
-        "notes": "Record exactly as appears in will"
     },
     {
         "question_number": "12",
@@ -153,48 +63,12 @@
         "notes": ""
     },
     {
-        "question_number": "13",
-        "question_text": "Does the will state a different town/city for the first-named executor's address?",
-        "response_type": "radio: Yes/No",
-        "validation": "none",
-        "conditional_logic": "if Yes go to Q13a, if No skip to Q14",
-        "maps_to_pdf": "if Yes then PR7: executor1_residence_discrepancy (insert conditional text: formerly of {{executor1_former_address}})",
-        "notes": "If the will does not state a residence/address, answer: No. If the street address is different but the town/city is still the same, answer: No"
-    },
-    {
-        "question_number": "13a",
-        "question_text": "What is the first-named executor's place of residence (exactly as stated in the will)?",
-        "response_type": "text",
-        "validation": "non-empty",
-        "conditional_logic": "none",
-        "maps_to_pdf": "PR7: executor1_former_address",
-        "notes": ""
-    },
-    {
         "question_number": "14",
         "question_text": "What is the first-named executor's occupation?",
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
         "maps_to_pdf": "PR7: executor1_occupation",
-        "notes": ""
-    },
-    {
-        "question_number": "15",
-        "question_text": "Does the will state a different occupation for the first-named executor?",
-        "response_type": "radio: Yes/No",
-        "validation": "none",
-        "conditional_logic": "if Yes go to Q15a, if No skip to Q16",
-        "maps_to_pdf": "if Yes then PR7: executor1_occupation_discrepancy (insert conditional text: formerly {{executor1_former_occupation}})",
-        "notes": "If the will does not state an occupation, answer: No"
-    },
-    {
-        "question_number": "15a",
-        "question_text": "What is the first-named executor's occupation as recorded on the will?",
-        "response_type": "text",
-        "validation": "non-empty",
-        "conditional_logic": "none",
-        "maps_to_pdf": "PR7: executor1_former_occupation",
         "notes": ""
     }
 ]
