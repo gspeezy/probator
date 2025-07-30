@@ -227,18 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Pluralization mapping: "PR7: single/plural_executors (if=1 then insert 'executor', if 1< then insert 'executors')"
-            if (mappingStr.includes('single/plural')) {
-                const keyMatch = mappingStr.match(/PR7:\s*([a-zA-Z_\/]+)/);
-                if (keyMatch) {
-                    const key = keyMatch[1];
-                    pdfData[key] = (answer === '1') ? 'executor' : 'executors';
-                    // This handles both executor and administrator based on your JSON sample
-                    if (key.includes('administrator')) {
-                        pdfData[key] = (answer === '1') ? 'administrator' : 'administrators';
-                    }
-                }
-            }
         }
         return pdfData;
     }
