@@ -5,19 +5,13 @@ async function generateTestPDF() {
   // Mock form data - replace with your actual form fields
   const mockData = {
     deceased_fullname: "Jarquavius Smith",
-    deceased_fullname_in_will: "Jon Smythe",
     deceased_residence: "Auranga",
-    former_will_address: "Drury",
     deceased_occupation: "Engineer",
-    former_will_occupation: "Doctor",
     placeofdeath: "Auckland",
     dateofdeath: "01/01/2025",
     executor1_fullname: "Jaheim Smith",
-    executor1_fullname_in_will: "Jaheim Jahron Smith",
     executor1_residence: "Queenstown",
-    executor1_former_address: "Cromwell",
     executor1_occupation: "Software Developer",
-    executor1_former_occupation: "Teacher",
   };
 
   // Read your existing template file
