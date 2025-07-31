@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Define question groupings by page
     const pageGroups = [
-        ['1', '3', '5'],     // Page 1
-        ['7', '8'],           // Page 2
-        ['10', '12', '14'],  // Page 3
+        ['1', '2', '3'],     // Page 1
+        ['4', '5'],           // Page 2
+        ['6', '7', '8'],  // Page 3
     ];
 
     // --- Main Initialization ---

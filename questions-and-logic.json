@@ -9,7 +9,7 @@
         "notes": ""
     },
     {
-        "question_number": "3",
+        "question_number": "2",
         "question_text": "In what town/city did the deceased usually live at the time of death?",
         "response_type": "text",
         "validation": "non-empty",
@@ -18,7 +18,7 @@
         "notes": ""
     },
     {
-        "question_number": "5",
+        "question_number": "3",
         "question_text": "Please confirm the deceased's occupation at time of death? (if retired, state: retired)",
         "response_type": "text",
         "validation": "non-empty",
@@ -27,7 +27,7 @@
         "notes": ""
     },
     {
-        "question_number": "7",
+        "question_number": "4",
         "question_text": "What was the place of death - please state just the town/city",
         "response_type": "text",
         "validation": "non-empty",
@@ -36,7 +36,7 @@
         "notes": ""
     },
     {
-        "question_number": "8",
+        "question_number": "5",
         "question_text": "Please confirm the date of death",
         "response_type": "date",
         "validation": "not a future date",
@@ -45,7 +45,7 @@
         "notes": ""
     },
     {
-        "question_number": "10",
+        "question_number": "6",
         "question_text": "What is the first-named executor's correct full legal name?",
         "response_type": "text",
         "validation": "non-empty",
@@ -54,7 +54,7 @@
         "notes": "Please provide the details for the executors (if more than one named in the will) in the SAME ORDER as they appear in the will"
     },
     {
-        "question_number": "12",
+        "question_number": "7",
         "question_text": "In what town/city does the first-named executor live?",
         "response_type": "text",
         "validation": "non-empty",
@@ -63,7 +63,7 @@
         "notes": ""
     },
     {
-        "question_number": "14",
+        "question_number": "8",
         "question_text": "What is the first-named executor's occupation?",
         "response_type": "text",
         "validation": "non-empty",
