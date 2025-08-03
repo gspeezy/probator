@@ -70,5 +70,14 @@
         "conditional_logic": "none",
         "maps_to_pdf": "PR7: executor1_occupation",
         "notes": ""
+    },
+    {
+        "question_number": "9",
+        "question_text": "What is the date of the will?",
+        "response_type": "date",
+        "validation": "none",
+        "conditional_logic": "none",
+        "maps_to_pdf": "dateofwill",
+        "notes": ""
     }
 ]
