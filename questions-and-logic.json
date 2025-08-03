@@ -5,7 +5,7 @@
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
-        "maps_to_pdf": "PR7:deceased_fullname",
+        "maps_to_pdf": "deceased_fullname",
         "notes": ""
     },
     {
@@ -14,7 +14,7 @@
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
-        "maps_to_pdf": "PR7: deceased_residence",
+        "maps_to_pdf": "deceased_residence",
         "notes": ""
     },
     {
@@ -23,7 +23,7 @@
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
-        "maps_to_pdf": "PR7: deceased_occupation",
+        "maps_to_pdf": "deceased_occupation",
         "notes": ""
     },
     {
@@ -32,7 +32,7 @@
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
-        "maps_to_pdf": "PR7: placeofdeath",
+        "maps_to_pdf": "placeofdeath",
         "notes": ""
     },
     {
@@ -41,7 +41,7 @@
         "response_type": "date",
         "validation": "not a future date",
         "conditional_logic": "none",
-        "maps_to_pdf": "PR7: dateofdeath",
+        "maps_to_pdf": "dateofdeath",
         "notes": ""
     },
     {
@@ -50,7 +50,7 @@
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
-        "maps_to_pdf": "PR7:executor1_fullname",
+        "maps_to_pdf": "executor1_fullname",
         "notes": "Please provide the details for the executors (if more than one named in the will) in the SAME ORDER as they appear in the will"
     },
     {
@@ -59,7 +59,7 @@
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
-        "maps_to_pdf": "PR7: executor1_residence",
+        "maps_to_pdf": "executor1_residence",
         "notes": ""
     },
     {
@@ -68,7 +68,7 @@
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
-        "maps_to_pdf": "PR7: executor1_occupation",
+        "maps_to_pdf": "executor1_occupation",
         "notes": ""
     },
     {
