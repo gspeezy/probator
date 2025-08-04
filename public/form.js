@@ -198,18 +198,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const answer = answers[qNum];
             const mappingStr = question.maps_to_pdf;
 
-            if (!mappingStr || mappingStr === "none") continue;
+            if (!mappingStr) continue;
 
-            // Simple direct mapping: "PR7:deceased_fullname"
-            if (mappingStr.startsWith('PR7:')) {
-                const key = mappingStr.split(':')[1].trim();
-                pdfData[key] = answer;
-            }
-
+            const key = mappingStr.trim();
+            pdfData[key] = answer;
         }
+                
         return pdfData;
     }
 
+        
     async function submitForm() {
         const finalData = mapAnswersToPdfData();
         
