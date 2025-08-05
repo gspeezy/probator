@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      margin: 60px 80px;
+      line-height: 1.6;
+      font-size: 12pt;
+    }
+    .header {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 60px;
+    }
+    .paragraph {
+      text-align: justify;
+      margin-bottom: 40px;
+    }
+    .signature-line {
+      border-top: 1px solid black;
+      width: 300px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    Exhibit Notes
+  </div>
+
+  <div class="paragraph">
+    This is the document bearing date the {{exhibit_day}} day of {{exhibit_month}} 20{{exhibit_year}} marked “{{exhibit_label}}” now produced and shown to {{deponent_full}} and {{other_deponents}} and referred to in his/her/their affidavit* to obtain grant of probate to himself/herself/themselves* as (sole, substituted, or as the case may be) executor(s) sworn at {{sworn_place}} this {{sworn_day}} day of {{sworn_month}} 20{{sworn_year}}, before me:
+  </div>
+
+  <div class="signature-line"></div>
+  <div>
+    [A Solicitor of the High Court of New Zealand / Justice of the Peace]
+  </div>
+</body>
+</html>
