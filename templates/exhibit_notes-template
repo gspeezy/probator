@@ -31,7 +31,7 @@
   </div>
 
   <div class="paragraph">
-    This is the document bearing date the {{exhibit_day}} day of {{exhibit_month}} 20{{exhibit_year}} marked “{{exhibit_label}}” now produced and shown to {{deponent_full}} and {{other_deponents}} and referred to in his/her/their affidavit* to obtain grant of probate to himself/herself/themselves* as (sole, substituted, or as the case may be) executor(s) sworn at {{sworn_place}} this {{sworn_day}} day of {{sworn_month}} 20{{sworn_year}}, before me:
+    This is the document bearing date the	  day of				20  	marked “     ” now produced and shown to {{executor1_fullname}} of {{executor1_residence}}, {{executor1_occupation}} and referred to in their affidavit to obtain grant of probate to themself as executor sworn at				this	   day of				20      , before me:
   </div>
 
   <div class="signature-line"></div>
