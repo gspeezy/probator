@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      margin: 60px 80px;
+      line-height: 1.6;
+      font-size: 12pt;
+    }
+    .header, .section-title {
+      text-align: center;
+      font-weight: bold;
+      margin: 30px 0;
+    }
+    .court-details, .estate-title {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+    .paragraph {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    .signature-line {
+      border-top: 1px solid black;
+      width: 300px;
+      margin: 40px 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">IN THE HIGH COURT OF NEW ZEALAND</div>
+  <div class="court-details">Wellington REGISTRY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025</div>
+
+  <div class="estate-title">
+    IN THE ESTATE of {{deceased_fullname}}, of {{deceased_residence}}, {{deceased_occupation}}, Deceased
+  </div>
+
+  <div class="section-title">
+    APPLICATION WITHOUT NOTICE FOR OBTAINING GRANT OF PROBATE
+  </div>
+
+  <div class="paragraph">
+    Firm Name<br>
+    PO Box and DX Numbers<br>
+    Telephone and Fax Numbers<br>
+    Name of person handling the matter
+  </div>
+
+  <div class="header">IN THE HIGH COURT OF NEW ZEALAND</div>
+  <div class="court-details">
+    Wellington REGISTRY<br>
+    CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
+  </div>
+
+  <div class="estate-title">
+    IN THE ESTATE of {{deceased_fullname}}, of {{deceased_residence}}, {{deceased_occupation}}, Deceased
+  </div>
+
+  <div class="paragraph">
+    To the Registrar of the High Court at Wellington<br>
+    This document notifies you that–
+  </div>
+
+  <div class="paragraph">
+    1. The applicant {{executor1_fullname}}, of {{executor1_residence}}, {{executor1_occupation}}, applies for an order that probate of the will of the deceased be granted to the applicant.
+  </div>
+
+  <div class="paragraph">
+    2. The grounds on which the order/each order* is sought are as follows:<br>
+    [specify concisely the grounds on which the order/each order* is sought. If more than 1, list each one or list them all].
+  </div>
+
+  <div class="paragraph">
+    3. The application is made in reliance on section 5 of the Administration Act 1969 and rule 27.4 of the High Court Rules 2016.
+  </div>
+
+  <div class="paragraph">
+    4. The application is made without notice to any other person on the following grounds:<br>
+    – the application affects only the applicant:<br>
+    – other persons who have an equal or higher entitlement to apply have been given notice of or have consented to the application:<br>
+    – rule 27.5 of the High Court Rules 2016 applies and the application contains proof of each matter stated in rule 27.5(3) of the High Court Rules 2016:<br>
+    – the application relates to a routine matter.
+  </div>
+
+  <div class="paragraph">
+    Date:
+  </div>
+
+  <div class="paragraph">
+    Applicant Signature:
+  </div>
+
+  <div class="paragraph">
+    Name of signatory:
+  </div>
+
+  <div class="paragraph">
+    This application is filed by:<br>
+    (individual responsible for the preparation of this application)<br><br>
+    Telephone and email address:<br>
+    Physical street address:
+  </div>
+
+</body>
+</html>
