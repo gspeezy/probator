@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      margin: 60px 80px;
+      line-height: 1.6;
+      font-size: 12pt;
+    }
+    .header, .section-title {
+      text-align: center;
+      font-weight: bold;
+      margin: 30px 0;
+    }
+    .court-details, .estate-title {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+    .paragraph {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    .signature-block {
+      margin-top: 60px;
+    }
+    .signature-line {
+      border-top: 1px solid black;
+      width: 300px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">IN THE HIGH COURT OF NEW ZEALAND</div>
+  <div class="court-details">Wellington REGISTRY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025</div>
+
+  <div class="estate-title">
+    IN THE ESTATE of {{deceased_fullname}}, of {{deceased_residence}}, {{deceased_occupation}}, Deceased
+  </div>
+
+  <div class="section-title">AFFIDAVIT FOR OBTAINING GRANT OF PROBATE</div>
+
+  <div class="paragraph">
+    Firm Name<br>
+    PO Box and DX Numbers<br>
+    Telephone and Fax Numbers<br>
+    Name of person handling the matter
+  </div>
+
+  <div class="header">IN THE HIGH COURT OF NEW ZEALAND</div>
+  <div class="court-details">
+    Wellington REGISTRY<br>
+    CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
+  </div>
+
+  <div class="estate-title">
+    IN THE ESTATE of {{deceased_fullname}}, of {{deceased_residence}}, {{deceased_occupation}}, Deceased
+  </div>
+
+  <div class="paragraph">
+    I, {{executor1_fullname}}, of {{executor1_residence}}, {{executor1_occupation}}, swear—
+  </div>
+
+  <div class="paragraph">
+    The deceased, {{deceased_fullname}}, whom I knew, died at {{placeofdeath}} on or about {{dateofdeath}}.
+  </div>
+
+  <div class="paragraph">
+    I attended the deceased’s funeral.
+  </div>
+
+  <div class="paragraph">
+    When the deceased died, they resided at {{deceased_residence}}.
+  </div>
+
+  <div class="paragraph">
+    I believe the document dated {{dateofwill}} and marked “    ” now produced and shown to me is the deceased’s last will.
+  </div>
+
+  <div class="paragraph">
+    I am the executor named in the will.
+  </div>
+
+  <div class="paragraph">
+    [Include this paragraph only if it applies. Select the statement that applies.]
+  </div>
+
+  <div class="paragraph">
+    <strong>Statement A</strong><br>
+    The deceased’s will was made on or after 1 November 2007. I am the deceased’s surviving spouse/surviving civil union partner*. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for our separation or the dissolution of our marriage/civil union*.
+  </div>
+
+  <div class="paragraph">
+    <strong>Statement B</strong><br>
+    The deceased’s will was made before 1 November 2007. I am the deceased’s surviving spouse. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for the dissolution of our marriage.
+  </div>
+
+  <div class="paragraph">
+    I will faithfully execute the will of which probate is granted in accordance with the law. If the court requires me to, I will file in the court and verify by affidavit—
+    <br>(a) an accurate inventory of the deceased’s estate; and
+    <br>(b) an account of the deceased’s estate that—
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;(i) is accurate; and
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;(ii) states the dates and details of all receipts and disbursements; and
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;(iii) states which of the receipts and disbursements were on capital account and which were on revenue account.
+  </div>
+
+  <div class="signature-block">
+    Sworn at {{sworn_place}}<br><br>
+    before me:
+  </div>
+
+  <div class="signature-line"></div>
+  <div>[print name]</div>
+  <div>(A solicitor of the High Court of New Zealand or Justice of the Peace)</div>
+
+</body>
+</html>
