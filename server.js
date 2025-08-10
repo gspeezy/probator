@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs/promises');
 const path = require('path');
 const puppeteer = require('puppeteer');
+const { generateProbatePDF } = require('./generate-pdf');
 
 const app = express();
 const PORT = 3000;
@@ -60,48 +61,21 @@ app.post('/api/submit', async (req, res) => {
     }
 });
 
-/**
- * Function to generate the probate PDF using Puppeteer
- */
-async function generateProbatePDF(data) {
+const { generateProbatePDF } = require('./generate-pdf');
+
+app.post('/generate', async (req, res) => {
     try {
-        // Read the HTML template
-        const templatePath = path.join(__dirname, 'templates', 'PR7-template.html');
-        let htmlContent = await fs.readFile(templatePath, 'utf-8');
-        
-        // Replace all placeholders with actual data
-        htmlContent = replacePlaceholders(htmlContent, data);
-        
-        // Launch Puppeteer and generate PDF
-        const browser = await puppeteer.launch({
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        const pdfBuffer = await generateProbatePDF(req.body);
+        res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': 'attachment; filename="probate-forms.pdf"',
         });
-        
-        const page = await browser.newPage();
-        await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-        
-        const pdfBuffer = await page.pdf({
-            format: 'A4',
-            printBackground: true,
-            margin: {
-                top: '20mm',
-                right: '20mm',
-                bottom: '20mm',
-                left: '20mm'
-            }
-        });
-        
-        await browser.close();
-        
-        console.log('✅ PDF generated successfully');
-        return pdfBuffer;
-        
+        res.send(pdfBuffer);
     } catch (error) {
-        console.error('Error in generateProbatePDF:', error);
-        throw error;
+        console.error('Error generating probate PDF:', error);
+        res.status(500).send('Error generating PDF');
     }
-}
+});
 
 /**
  * Function to replace placeholders in HTML template with actual data
