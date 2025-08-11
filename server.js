@@ -61,8 +61,6 @@ app.post('/api/submit', async (req, res) => {
     }
 });
 
-const { generateProbatePDF } = require('./generate-pdf');
-
 app.post('/generate', async (req, res) => {
     try {
         const pdfBuffer = await generateProbatePDF(req.body);

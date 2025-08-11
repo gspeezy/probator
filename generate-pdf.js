@@ -3,15 +3,19 @@ const fs = require('fs').promises;
 const path = require('path');
 const puppeteer = require('puppeteer');
 
-/**
- * Replace placeholders in the HTML with actual data.
- * Assumes replacePlaceholders is a shared function somewhere.
- */
-const { replacePlaceholders } = require('./replacePlaceholders');
+// Simple placeholder replacement function
+function replacePlaceholders(htmlContent, data) {
+    let result = htmlContent;
+    for (const [key, value] of Object.entries(data)) {
+        const regex = new RegExp(`{{${key}}}`, 'g');
+        result = result.replace(regex, value);
+    }
+    return result;
+}
 
 async function generateProbatePDF(data) {
     try {
-        // Centralised list of templates
+        // Centralised list of templates in the correct order
         const templates = [
             'PR1-template.html',
             'PR1AA-template.html',
