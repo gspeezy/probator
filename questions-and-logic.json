@@ -46,6 +46,15 @@
     },
     {
         "question_number": "6",
+        "question_text": "What is the date of the will?",
+        "response_type": "date",
+        "validation": "none",
+        "conditional_logic": "none",
+        "maps_to_pdf": "dateofwill",
+        "notes": ""
+    },
+    {
+        "question_number": "7",
         "question_text": "What is the first-named executor's correct full legal name?",
         "response_type": "text",
         "validation": "non-empty",
@@ -54,7 +63,7 @@
         "notes": "Please provide the details for the executors (if more than one named in the will) in the SAME ORDER as they appear in the will"
     },
     {
-        "question_number": "7",
+        "question_number": "8",
         "question_text": "In what town/city does the first-named executor live?",
         "response_type": "text",
         "validation": "non-empty",
@@ -63,21 +72,13 @@
         "notes": ""
     },
     {
-        "question_number": "8",
+        "question_number": "9",
         "question_text": "What is the first-named executor's occupation?",
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
         "maps_to_pdf": "executor1_occupation",
         "notes": ""
-    },
-    {
-        "question_number": "9",
-        "question_text": "What is the date of the will?",
-        "response_type": "date",
-        "validation": "none",
-        "conditional_logic": "none",
-        "maps_to_pdf": "dateofwill",
-        "notes": ""
     }
+
 ]
