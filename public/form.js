@@ -15,6 +15,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let answers = {}; // { "question_number": "user_answer" }
     let visitedPages = []; // Stack to keep track of visited pages for "Previous" button
     
+    // --- Date Formatting ---
+    function formatDateLongform(dateStr) {
+        if (!dateStr) return '';
+        const date = new Date(dateStr);
+        if (isNaN(date)) return dateStr; // fallback if invalid
+    
+        const day = date.getDate();
+        const daySuffix =
+            day % 10 === 1 && day !== 11 ? 'st' :
+            day % 10 === 2 && day !== 12 ? 'nd' :
+            day % 10 === 3 && day !== 13 ? 'rd' : 'th';
+    
+        const month = date.toLocaleString('en-US', { month: 'long' });
+        const year = date.getFullYear();
+    
+        return `${day}${daySuffix} of ${month} ${year}`;
+    }    
+    
     // Define question groupings by page
     const pageGroups = [
         ['1', '2', '3'],     // Page 1
@@ -202,6 +220,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const key = mappingStr.trim();
             pdfData[key] = answer;
+
+            if (question.response_type.startsWith('date')) {
+                pdfData[key] = formatDateLongform(answer);
+            } else {
+                pdfData[key] = answer;
+            }            
         }
                 
         return pdfData;
