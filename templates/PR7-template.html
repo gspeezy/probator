@@ -9,6 +9,31 @@
             line-height: 1.6;
             font-size: 12pt;
         }
+        
+        /* NEW: Probate form container */
+        .probate-form {
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 120px);
+            page-break-inside: avoid;
+        }
+        
+        /* NEW: Main content that can compress */
+        .probate-content {
+            flex: 1;
+        }
+        
+        /* MODIFIED: Lawyer details - added flex positioning */
+        .lawyer-details {
+            flex-shrink: 0;
+            margin-top: auto;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            text-align: center;
+            font-size: 12pt;    
+        }
+        
+        /* EXISTING STYLES - UNCHANGED */
         .header {
             text-align: center;
             font-weight: bold;
@@ -53,59 +78,52 @@
         .page-two {
             margin-top: 60px;
         }
-        .lawyer-details {
-            position: fixed;
-            bottom: 30px;   
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 12pt;    
-        }     
-        .footer-line {
-            border-top: 1px solid black;
-            margin-bottom: 8px;
-        }
     </style>
 </head>
 <body>
-    <div class="header">
-        IN THE HIGH COURT OF NEW ZEALAND
-    </div>
-    
-    <div class="court-details">
-        Wellington REGISTRY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
-    </div>
-    
-    <div class="estate-title" style="text-align: left;">
-        IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}} of {{deceased_residence}}, {{deceased_occupation}}, Deceased
-    </div>
-    
-    <div style="margin-top: 150px; margin-bottom: 60px;">
-        &nbsp;
-    </div>
-    
-    <div style="text-align: center; border-top: 1px solid black; border-bottom: 1px solid black; margin: 20px 0; padding: 10px 0;">
-        <strong>PROBATE IN COMMON FORM</strong>
-    </div>
-    
-    <div style="margin-top: 300px; margin-bottom: 60px;">
-        &nbsp;
-    </div>
-    
-    <div style="border-bottom: 1px solid black; margin: 20px 0; padding-bottom: 5px;">
-        &nbsp;
-    </div>
-    
-    <div class="lawyer-details">
-        <div class="footer-line"></div> 
-        Firm Name<br>
-        PO Box and DX Numbers<br>
-        Telephone and Fax Numbers<br>
-        Name of person handling the matter
+    <!-- NEW: Wrapper for probate form section -->
+    <div class="probate-form">
+        <!-- NEW: Content wrapper -->
+        <div class="probate-content">
+            <div class="header">
+                IN THE HIGH COURT OF NEW ZEALAND
+            </div>
+            
+            <div class="court-details">
+                Wellington REGISTRY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
+            </div>
+            
+            <div class="estate-title" style="text-align: left;">
+                IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}} of {{deceased_residence}}, {{deceased_occupation}}, Deceased
+            </div>
+            
+            <!-- MODIFIED: Replaced fixed margins with flexible div -->
+            <div style="flex: 1; min-height: 150px;"></div>
+            
+            <div style="text-align: center; border-top: 1px solid black; border-bottom: 1px solid black; margin: 20px 0; padding: 10px 0;">
+                <strong>PROBATE IN COMMON FORM</strong>
+            </div>
+            
+            <!-- MODIFIED: Replaced fixed margins with flexible div -->
+            <div style="flex: 2; min-height: 200px;"></div>
+            
+            <div style="border-bottom: 1px solid black; margin: 20px 0; padding-bottom: 5px;">
+                &nbsp;
+            </div>
+        </div>
+        
+        <!-- MOVED: Lawyer details (minimal changes to existing styles) -->
+        <div class="lawyer-details">
+            Firm Name<br>
+            PO Box and DX Numbers<br>
+            Telephone and Fax Numbers<br>
+            Name of person handling the matter
+        </div>
     </div>
     
     <div style="page-break-after: always;"></div>
     
+    <!-- Page 2 - COMPLETELY UNCHANGED -->
     <div class="page-two">
         <div class="header" style="text-align: left;">
             IN THE HIGH COURT OF NEW ZEALAND
