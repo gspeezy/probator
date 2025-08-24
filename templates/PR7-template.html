@@ -5,7 +5,7 @@
     <style>
         body { 
             font-family: 'Times New Roman', serif; 
-            margin: 60px 80px; 
+            margin: 2cm; 
             line-height: 1.6;
             font-size: 12pt;
         }
@@ -17,12 +17,7 @@
             min-height: calc(100vh - 120px);
             page-break-inside: avoid;
         }
-        
-        /* NEW: Main content that can compress */
-        .probate-content {
-            flex: 1;
-        }
-        
+
         /* MODIFIED: Lawyer details - added flex positioning */
         .lawyer-details {
             flex-shrink: 0;
@@ -33,7 +28,6 @@
             font-size: 12pt;    
         }
         
-        /* EXISTING STYLES - UNCHANGED */
         .header {
             text-align: center;
             font-weight: bold;
@@ -81,10 +75,9 @@
     </style>
 </head>
 <body>
-    <!-- NEW: Wrapper for probate form section -->
-    <div class="probate-form">
-        <!-- NEW: Content wrapper -->
-        <div class="probate-content">
+
+    <!-- PAGE 1 -->
+        <div class="probate-form">
             <div class="header">
                 IN THE HIGH COURT OF NEW ZEALAND
             </div>
@@ -123,7 +116,7 @@
     
     <div style="page-break-after: always;"></div>
     
-    <!-- Page 2 - COMPLETELY UNCHANGED -->
+    <!-- Page 2 -->
     <div class="page-two">
         <div class="header" style="text-align: left;">
             IN THE HIGH COURT OF NEW ZEALAND
