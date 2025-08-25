@@ -1,108 +1,182 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <style>
-    body {
-      font-family: 'Times New Roman', serif;
-      margin: 60px 80px;
-      line-height: 1.6;
-      font-size: 12pt;
-    }
-    .header, .section-title {
-      text-align: center;
-      font-weight: bold;
-      margin: 30px 0;
-    }
-    .court-details, .estate-title {
-      text-align: left;
-      margin-bottom: 30px;
-    }
-    .paragraph {
-      margin-bottom: 20px;
-      text-align: justify;
-    }
-    .signature-line {
-      border-top: 1px solid black;
-      width: 300px;
-      margin: 40px 0 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            font-family: 'Times New Roman', serif; 
+            margin: 2cm; 
+            line-height: 1.6;
+            font-size: 12pt;
+        }
+        
+        /* NEW: Probate form container */
+        .probate-form {
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 120px);
+            page-break-inside: avoid;
+        }
+
+        /* MODIFIED: Lawyer details - added flex positioning */
+        .lawyer-details {
+            flex-shrink: 0;
+            margin-top: auto;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            text-align: center;
+            font-size: 12pt;    
+        }
+        
+        .header {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .court-details {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .estate-title {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .paragraph {
+            margin-bottom: 20px;
+            text-align: justify;
+            text-indent: 0;
+        }
+        .paragraph-number {
+            display: inline-block;
+            width: 30px;
+            font-weight: bold;
+        }
+        .signature-section {
+            margin-top: 60px;
+        }
+        .signature-line {
+            border-bottom: 1px solid black;
+            width: 200px;
+            display: inline-block;
+        }
+        .date-fields {
+            margin: 40px 0;
+        }
+        .date-field {
+            border-bottom: 1px solid black;
+            width: 100px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .page-two {
+            margin-top: 60px;
+        }
+    </style>
 </head>
+
 <body>
+    <!-- PAGE 1 -->
+        <div class="probate-form">
+            <div class="header">
+                IN THE HIGH COURT OF NEW ZEALAND
+            </div>
+            
+            <div class="court-details">
+                Wellington REGISTRY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
+            </div>
+            
+            <div class="estate-title" style="text-align: left;">
+                IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}} of {{deceased_residence}}, {{deceased_occupation}}, Deceased
+            </div>
+            
+            <!-- MODIFIED: Replaced fixed margins with flexible div -->
+            <div style="flex: 1; min-height: 150px;"></div>
+            
+            <div style="text-align: center; border-top: 1px solid black; border-bottom: 1px solid black; margin: 20px 0; padding: 10px 0;">
+                <strong>APPLICATION WITHOUT NOTICE FOR OBTAINING GRANT OF PROBATE</strong>
+            </div>
+            
+            <!-- MODIFIED: Replaced fixed margins with flexible div -->
+            <div style="flex: 2; min-height: 200px;"></div>
+            
+            <div style="border-bottom: 1px solid black; margin: 20px 0; padding-bottom: 5px;">
+                &nbsp;
+            </div>
 
-  <div class="header">IN THE HIGH COURT OF NEW ZEALAND</div>
-  <div class="court-details">Wellington REGISTRY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025</div>
+            <div class="lawyer-details">
+              Firm Name<br>
+              PO Box and DX Numbers<br>
+              Telephone and Fax Numbers<br>
+              Name of person handling the matter
+          </div>
+        </div>
+    </div>
+    
+    <div style="page-break-after: always;"></div>
+    
+    <!-- Page 2 -->
+    <div class="page-two">
+        <div class="header" style="text-align: left;">
+            IN THE HIGH COURT OF NEW ZEALAND
+        </div>
+        
+        <div class="court-details" style="text-align: left;">
+            Wellington REGISTRY<br>
+        </div>
+        
+        <div class="estate-title" style="text-align: left;">
+            IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}} of {{deceased_residence}}, {{deceased_occupation}}, Deceased
+        </div>
 
-  <div class="estate-title">
-    IN THE ESTATE of {{deceased_fullname}}, of {{deceased_residence}}, {{deceased_occupation}}, Deceased
-  </div>
+        <div class="paragraph">
+          To the Registrar of the High Court at Wellington<br>
+          This document notifies you that–
+        </div>
 
-  <div class="section-title">
-    APPLICATION WITHOUT NOTICE FOR OBTAINING GRANT OF PROBATE
-  </div>
-
-  <div class="paragraph">
-    Firm Name<br>
-    PO Box and DX Numbers<br>
-    Telephone and Fax Numbers<br>
-    Name of person handling the matter
-  </div>
-
-  <div class="header">IN THE HIGH COURT OF NEW ZEALAND</div>
-  <div class="court-details">
-    Wellington REGISTRY<br>
-    CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
-  </div>
-
-  <div class="estate-title">
-    IN THE ESTATE of {{deceased_fullname}}, of {{deceased_residence}}, {{deceased_occupation}}, Deceased
-  </div>
-
-  <div class="paragraph">
-    To the Registrar of the High Court at Wellington<br>
-    This document notifies you that–
-  </div>
-
-  <div class="paragraph">
-    1. The applicant {{executor1_fullname}}, of {{executor1_residence}}, {{executor1_occupation}}, applies for an order that probate of the will of the deceased be granted to the applicant.
-  </div>
-
-  <div class="paragraph">
-    2. The grounds on which the order/each order* is sought are as follows:<br>
+        <div class="paragraph">
+            <span class="paragraph-number">1.</span>
+            The applicant {{executor1_fullname}}, of {{executor1_residence}}, {{executor1_occupation}}, applies for an order that probate of the will of the deceased be granted to the applicant.
+        </div>
+        
+        <div class="paragraph">
+            <span class="paragraph-number">2.</span>
+            The grounds on which the order/each order* is sought are as follows:<br>
     [specify concisely the grounds on which the order/each order* is sought. If more than 1, list each one or list them all].
-  </div>
+        </div>
+        
+        <div class="paragraph">
+            <span class="paragraph-number">3.</span>
+            The application is made in reliance on section 5 of the Administration Act 1969 and rule 27.4 of the High Court Rules 2016.
+        </div>
+        
+        <div class="paragraph">
+          <span class="paragraph-number">4.</span>
+          The application is made without notice to any other person on the following grounds:<br>
+          (a) the application affects only the applicant:<br>
+          (b) other persons who have an equal or higher entitlement to apply have been given notice of or have consented to the application:<br>
+          (c) rule 27.5 of the High Court Rules 2016 applies and the application contains proof of each matter stated in rule 27.5(3) of the High Court Rules 2016:<br>
+          (d) the application relates to a routine matter.
+        </div>
 
-  <div class="paragraph">
-    3. The application is made in reliance on section 5 of the Administration Act 1969 and rule 27.4 of the High Court Rules 2016.
-  </div>
-
-  <div class="paragraph">
-    4. The application is made without notice to any other person on the following grounds:<br>
-    – the application affects only the applicant:<br>
-    – other persons who have an equal or higher entitlement to apply have been given notice of or have consented to the application:<br>
-    – rule 27.5 of the High Court Rules 2016 applies and the application contains proof of each matter stated in rule 27.5(3) of the High Court Rules 2016:<br>
-    – the application relates to a routine matter.
-  </div>
-
-  <div class="paragraph">
-    Date:
-  </div>
-
-  <div class="paragraph">
-    Applicant Signature:
-  </div>
-
-  <div class="paragraph">
-    Name of signatory:
-  </div>
-
-  <div class="paragraph">
-    This application is filed by:<br>
-    (individual responsible for the preparation of this application)<br><br>
-    Telephone and email address:<br>
-    Physical street address:
-  </div>
-
+        <div class="paragraph">
+          Date:
+        </div>
+      
+        <div class="paragraph">
+          Applicant Signature:
+        </div>
+      
+        <div class="paragraph">
+          Name of signatory:
+        </div>
+      
+        <div class="paragraph">
+          This application is filed by:<br>
+          (individual responsible for the preparation of this application)<br><br>
+          Telephone and email address:<br>
+          Physical street address:
+        </div>
+    </div>
 </body>
 </html>
