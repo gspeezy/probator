@@ -17,8 +17,8 @@ async function generateProbatePDF(data) {
     try {
         // Centralised list of templates in the correct order
         const templates = [
-            'PR1-template.html',
             'PR1AA-template.html',
+            'PR1-template.html',
             'PR7-template.html',
             'exhibit_notes-template.html'
         ];
