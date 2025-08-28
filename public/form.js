@@ -257,7 +257,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.removeChild(a);
             
             // On success, show completion message
-            formContainer.style.display = 'none';
+            formContainer.style.display = 'block';
+            document.getElementById("question-section").style.display = "none";
+            document.getElementById("navigation-buttons").style.display = "none";
+            document.getElementById("progress-bar-container").style.display = "none";
             completionMessage.style.display = 'block';
 
         } catch (error) {
