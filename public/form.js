@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageGroups = [
         ['1', '2', '3'],     // Page 1
         ['4', '5', '6'],           // Page 2
-        ['7', '8', '9'],  // Page 3
+        ['7', '8', '9', '10'],  // Page 3
     ];
 
     // --- Main Initialization ---
