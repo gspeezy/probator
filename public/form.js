@@ -206,32 +206,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Final Data Mapping and Submission ---
     function mapAnswersToPdfData() {
         const pdfData = {};
-
-        // Iterate through all answered questions to perform the mapping
+    
+        // First pass: Map all regular answers
         for (const qNum in answers) {
             const question = questionMap.get(qNum);
             const answer = answers[qNum];
             const mappingStr = question.maps_to_pdf;
-
+    
             if (!mappingStr) continue;
-
+    
             const key = mappingStr.trim();
-            pdfData[key] = answer;
-
+    
             if (question.response_type.startsWith('date')) {
                 pdfData[key] = formatDateLongform(answer);
             } else {
                 pdfData[key] = answer;
             }            
         }
+        
+        // Special logic for spouse/partner question (question 10) and will date (question 6)
+        const isSpousePartner = answers['10'] === 'Yes';
+        const dateOfWill = answers['6'];
+        
+        if (!isSpousePartner) {
+            // Hide paragraph 6 entirely
+            pdfData['PARAGRAPH_6'] = '';
+        } else {
+            // Show paragraph 6 with appropriate statement
+            if (dateOfWill) {
+                const willDate = new Date(dateOfWill);
+                const cutoffDate = new Date('2007-11-01');
+                
+                if (willDate < cutoffDate) {
+                    // Show Statement A
+                    pdfData['PARAGRAPH_6'] = `
+                        <div class="paragraph-6">
+                            <p><strong>6. [Include this paragraph only if it applies. Select the statement that applies.]</strong></p>
+                            <div class="statement-selected">
+                                <p><strong>Statement A ✓</strong></p>
+                                <p>The deceased's will was made on or after 1 November 2007. I am the deceased's surviving spouse/surviving civil union partner*. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for our separation or the dissolution of our marriage/civil union*.</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // Show Statement B
+                    pdfData['PARAGRAPH_6'] = `
+                        <div class="paragraph-6">
+                            <p><strong>6. [Include this paragraph only if it applies. Select the statement that applies.]</strong></p>
+                            <div class="statement-selected">
+                                <p><strong>Statement B ✓</strong></p>
+                                <p>The deceased's will was made before 1 November 2007. I am the deceased's surviving spouse. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for the dissolution of our marriage.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        }
                 
         return pdfData;
     }
 
-        
     async function submitForm() {
         const finalData = mapAnswersToPdfData();
         
