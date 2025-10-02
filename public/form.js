@@ -240,27 +240,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cutoffDate = new Date('2007-11-01');
                 
                 if (willDate < cutoffDate) {
-                    // Show Statement A
-                    pdfData['PARAGRAPH_6'] = `
-                        <div class="paragraph-6">
-                            <p><strong>6. [Include this paragraph only if it applies. Select the statement that applies.]</strong></p>
-                            <div class="statement-selected">
-                                <p><strong>Statement A ✓</strong></p>
-                                <p>The deceased's will was made on or after 1 November 2007. I am the deceased's surviving spouse/surviving civil union partner*. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for our separation or the dissolution of our marriage/civil union*.</p>
-                            </div>
-                        </div>
-                    `;
-                } else {
                     // Show Statement B
                     pdfData['PARAGRAPH_6'] = `
-                        <div class="paragraph-6">
-                            <p><strong>6. [Include this paragraph only if it applies. Select the statement that applies.]</strong></p>
-                            <div class="statement-selected">
-                                <p><strong>Statement B ✓</strong></p>
-                                <p>The deceased's will was made before 1 November 2007. I am the deceased's surviving spouse. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for the dissolution of our marriage.</p>
-                            </div>
+                    <div class="paragraph-6">
+                        <p><strong>6. [Include this paragraph only if it applies. Select the statement that applies.]</strong></p>
+                        <div class="statement-selected">
+                            <p><strong>Statement B ✓</strong></p>
+                            <p>The deceased's will was made before 1 November 2007. I am the deceased's surviving spouse. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for the dissolution of our marriage.</p>
                         </div>
-                    `;
+                    </div>
+                `;
+                } else {
+                    // Show Statement A
+                    pdfData['PARAGRAPH_6'] = `
+                    <div class="paragraph-6">
+                        <p><strong>6. [Include this paragraph only if it applies. Select the statement that applies.]</strong></p>
+                        <div class="statement-selected">
+                            <p><strong>Statement A ✓</strong></p>
+                            <p>The deceased's will was made on or after 1 November 2007. I am the deceased's surviving spouse/surviving civil union partner*. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for our separation or the dissolution of our marriage/civil union*.</p>
+                        </div>
+                    </div>
+                `;
                 }
             }
         }
