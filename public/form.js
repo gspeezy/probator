@@ -264,6 +264,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+
+        if (!isSpousePartner) {
+            pdfData['PARAGRAPH_6'] = '';
+            pdfData['PARA_7_NUMBER'] = '6'; // Renumber para 7 to 6
+        } else {
+            // ... existing Statement A/B logic ...
+            pdfData['PARA_7_NUMBER'] = '7'; // Keep as 7
+        }
                 
         return pdfData;
     }
