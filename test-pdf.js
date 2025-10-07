@@ -3,9 +3,9 @@ const { generateProbatePDF } = require('./generate-pdf');
 
 (async () => {
   const mockData = {
-    deceased_fullname: "Jarquavius Smith",
-    deceased_residence: "Auranga",
-    deceased_occupation: "Engineer",
+    deceased_fullname: "{{deceased_fullname}}",
+    deceased_residence: "{{deceased_residence}}",
+    deceased_occupation: "{{deceased_occupation}}",
     placeofdeath: "Auckland",
     dateofdeath: "01/01/2025",
     executor1_fullname: "Jaheim Smith",
