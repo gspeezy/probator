@@ -36,8 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Define question groupings by page
     const pageGroups = [
         ['1', '2', '3'],     // Page 1
-        ['4', '5', '6'],           // Page 2
-        ['7', '8', '9', '10'],  // Page 3
+        ['4', '5', '6', '7', '8', '9'],    // Page 2
+        [ '10', '11', '12'],  // Page 3
+        [ '13', '14', '15', '16']
     ];
 
     // --- Main Initialization ---
@@ -226,9 +227,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }            
         }
         
+        // Handle "formerly known as" clauses
+        pdfData['former_name_clause'] = answers['5'] ? `, formerly known as ${answers['5']}` : '';
+        pdfData['former_residence_clause'] = answers['7'] ? `, formerly of ${answers['7']}` : '';
+        pdfData['former_occupation_clause'] = answers['9'] ? `, formerly ${answers['9']}` : '';
+
         // Special logic for spouse/partner question (question 10) and will date (question 6)
-        const isSpousePartner = answers['10'] === 'Yes';
-        const dateOfWill = answers['6'];
+        const isSpousePartner = answers['16'] === 'Yes';
+        const dateOfWill = answers['12'];
         
         if (!isSpousePartner) {
             // Hide paragraph 6 entirely

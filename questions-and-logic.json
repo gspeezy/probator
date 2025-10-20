@@ -28,6 +28,60 @@
     },
     {
         "question_number": "4",
+        "question_text": "Has the deceased's name changed since the will was drafted?",
+        "response_type": "radio: Yes/No",
+        "validation": "non-empty",
+        "conditional_logic": "none",
+        "maps_to_pdf": "",
+        "notes": "Triggers question 5 if Yes"
+      },
+      {
+        "question_number": "5",
+        "question_text": "What was the deceased's former name as stated in the will?",
+        "response_type": "text",
+        "validation": "non-empty",
+        "conditional_logic": "show_if: 4 = Yes",
+        "maps_to_pdf": "former_name",
+        "notes": ""
+      },
+      {
+        "question_number": "6",
+        "question_text": "Has the deceased's residence changed since the will was drafted?",
+        "response_type": "radio: Yes/No",
+        "validation": "non-empty",
+        "conditional_logic": "none",
+        "maps_to_pdf": "",
+        "notes": "Triggers question 7 if Yes"
+      },
+      {
+        "question_number": "7",
+        "question_text": "What was the deceased's former residence as stated in the will?",
+        "response_type": "text",
+        "validation": "non-empty",
+        "conditional_logic": "show_if: 6 = Yes",
+        "maps_to_pdf": "former_residence",
+        "notes": ""
+      },
+      {
+        "question_number": "8",
+        "question_text": "Has the deceased's occupation changed since the will was drafted?",
+        "response_type": "radio: Yes/No",
+        "validation": "non-empty",
+        "conditional_logic": "none",
+        "maps_to_pdf": "",
+        "notes": "Triggers question 9 if Yes"
+      },
+      {
+        "question_number": "9",
+        "question_text": "What was the deceased's former occupation as stated in the will?",
+        "response_type": "text",
+        "validation": "non-empty",
+        "conditional_logic": "show_if: 8 = Yes",
+        "maps_to_pdf": "former_occupation",
+        "notes": ""
+      },
+    {
+        "question_number": "10",
         "question_text": "What was the place of death - please state just the town/city",
         "response_type": "text",
         "validation": "non-empty",
@@ -36,7 +90,7 @@
         "notes": ""
     },
     {
-        "question_number": "5",
+        "question_number": "11",
         "question_text": "Please confirm the date of death",
         "response_type": "date",
         "validation": "not a future date",
@@ -45,7 +99,7 @@
         "notes": ""
     },
     {
-        "question_number": "6",
+        "question_number": "12",
         "question_text": "What is the date of the will?",
         "response_type": "date",
         "validation": "none",
@@ -54,7 +108,7 @@
         "notes": ""
     },
     {
-        "question_number": "7",
+        "question_number": "13",
         "question_text": "What is the first-named executor's correct full legal name?",
         "response_type": "text",
         "validation": "non-empty",
@@ -63,7 +117,7 @@
         "notes": "Please provide the details for the executors (if more than one named in the will) in the SAME ORDER as they appear in the will"
     },
     {
-        "question_number": "8",
+        "question_number": "14",
         "question_text": "In what town/city does the first-named executor live?",
         "response_type": "text",
         "validation": "non-empty",
@@ -72,7 +126,7 @@
         "notes": ""
     },
     {
-        "question_number": "9",
+        "question_number": "15",
         "question_text": "What is the first-named executor's occupation?",
         "response_type": "text",
         "validation": "non-empty",
@@ -81,7 +135,7 @@
         "notes": ""
     },
     {
-        "question_number": "10",
+        "question_number": "16",
         "question_text": "Is the applicant the spouse or civil union partner of the deceased?",
         "response_type": "radio:Yes/No",
         "validation": "non-empty", 
