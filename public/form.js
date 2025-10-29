@@ -9,17 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
 
     // --- State Management ---
-    let allQuestions = []; // To store all questions from JSON
-    let questionMap = new Map(); // For quick lookup of question by number
-    let currentPageIndex = 0; // The current page index
-    let answers = {}; // { "question_number": "user_answer" }
-    let visitedPages = []; // Stack to keep track of visited pages for "Previous" button
+    let allQuestions = [];
+    let questionMap = new Map();
+    let currentPageIndex = 0;
+    let answers = {};
+    let visitedPages = [];
     
     // --- Date Formatting ---
     function formatDateLongform(dateStr) {
         if (!dateStr) return '';
         const date = new Date(dateStr);
-        if (isNaN(date)) return dateStr; // fallback if invalid
+        if (isNaN(date)) return dateStr;
     
         const day = date.getDate();
         const daySuffix =
@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Define question groupings by page
     const pageGroups = [
-        ['1', '2', '3'],     // Page 1
-        ['4', '5', '6', '7', '8', '9'],    // Page 2
-        [ '10', '11', '12'],  // Page 3
-        [ '13', '14', '15', '16']
+        ['1', '2', '3'],
+        ['4', '5', '6', '7', '8', '9'],
+        ['10', '11', '12'],
+        ['13', '14', '15', '16']
     ];
 
     // --- Main Initialization ---
@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('Network response was not ok');
             allQuestions = await response.json();
             
-            // Populate the question map for easy lookups
             allQuestions.forEach(q => questionMap.set(q.question_number, q));
 
             if (allQuestions.length > 0) {
@@ -62,45 +61,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- Conditional Field Handler ---
+    function handleConditionalFields(triggerQuestionNumber) {
+        const dependencies = {
+            '4': '5',
+            '6': '7',
+            '8': '9'
+        };
+        
+        const dependentQ = dependencies[triggerQuestionNumber];
+        if (!dependentQ) return;
+        
+        const triggerAnswer = document.querySelector(`[name="q_${triggerQuestionNumber}"]:checked`)?.value;
+        const dependentInput = document.getElementById(`q_${dependentQ}`);
+        
+        if (dependentInput) {
+            if (triggerAnswer === 'No') {
+                dependentInput.disabled = true;
+                dependentInput.style.backgroundColor = '#e0e0e0'; // Light gray background
+                dependentInput.style.color = '#666'; // Darker text color
+                dependentInput.style.cursor = 'not-allowed';
+                dependentInput.value = '';
+                dependentInput.title = 'This field is not required because you indicated the details have not changed';
+            } else {
+                dependentInput.disabled = false;
+                dependentInput.style.backgroundColor = ''; // Reset to default
+                dependentInput.style.color = ''; // Reset to default
+                dependentInput.style.cursor = 'text';
+                dependentInput.title = '';
+            }
+        }
+    }
+
     // --- Rendering Logic ---
     function renderPage(pageIndex) {
         currentPageIndex = pageIndex;
         if (pageIndex >= pageGroups.length) return;
 
         const currentPageQuestions = pageGroups[pageIndex];
-        responseAreaEl.innerHTML = ''; // Clear previous inputs
+        responseAreaEl.innerHTML = '';
 
-        // Create a container for all questions on this page
         const pageContainer = document.createElement('div');
         pageContainer.className = 'page-container';
 
-        currentPageQuestions.forEach((questionNumber, index) => {
+        currentPageQuestions.forEach((questionNumber) => {
             const question = questionMap.get(questionNumber);
             if (!question) return;
 
-            // Check if this question should be shown based on conditional logic
-            if (!shouldShowQuestion(questionNumber)) return;
-
-            // Create question container
             const questionContainer = document.createElement('div');
             questionContainer.className = 'question-container';
             questionContainer.style.marginBottom = '2rem';
 
-            // Question text
             const questionTitle = document.createElement('h3');
             questionTitle.textContent = `${questionNumber}. ${question.question_text}`;
             questionTitle.style.marginBottom = '1rem';
             questionTitle.style.color = '#2c3e50';
             questionContainer.appendChild(questionTitle);
 
-            // Input area for this question
             const inputContainer = document.createElement('div');
             inputContainer.className = 'input-container';
 
-            // Restore saved answer if it exists
             const savedAnswer = answers[question.question_number];
 
-            // Generate input based on response_type
             switch (question.response_type.split(':')[0]) {
                 case 'text':
                 case 'number':
@@ -112,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (savedAnswer) input.value = savedAnswer;
                     inputContainer.appendChild(input);
                     break;
+                    
                 case 'radio':
                     const options = question.response_type.split(':')[1].split('/');
                     options.forEach(option => {
@@ -121,6 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         radio.name = `q_${question.question_number}`;
                         radio.value = option;
                         if (savedAnswer === option) radio.checked = true;
+                        
+                        radio.addEventListener('change', () => {
+                            handleConditionalFields(question.question_number);
+                        });
+                        
                         label.appendChild(radio);
                         label.appendChild(document.createTextNode(` ${option}`));
                         inputContainer.appendChild(label);
@@ -133,32 +161,22 @@ document.addEventListener('DOMContentLoaded', () => {
             pageContainer.appendChild(questionContainer);
         });
 
-        // Update page title
         questionTextEl.textContent = `Page ${pageIndex + 1} of ${pageGroups.length}`;
-
         responseAreaEl.appendChild(pageContainer);
+        
+        // Apply conditional field states after rendering
+        ['4', '6', '8'].forEach(qNum => {
+            handleConditionalFields(qNum);
+        });
+        
         updateNavigation();
-    }
-
-    function shouldShowQuestion(questionNumber) {
-        // Check conditional logic to determine if question should be shown
-        const question = questionMap.get(questionNumber);
-        if (!question || !question.conditional_logic || question.conditional_logic === 'none') {
-            return true;
-        }
-
     }
 
     // --- Navigation and State Update ---
     function updateNavigation() {
-        // Show/hide previous button
         prevBtn.style.display = visitedPages.length > 0 ? 'inline-block' : 'none';
-
-        // Update progress bar
         const progressPercentage = ((currentPageIndex + 1) / pageGroups.length) * 100;
         progressBar.style.width = `${progressPercentage}%`;
-
-        // Update next button text to "Finish" on the last page
         nextBtn.textContent = (currentPageIndex === pageGroups.length - 1) ? 'Finish' : 'Next';
     }
 
@@ -166,8 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentPageQuestions = pageGroups[currentPageIndex];
         
         currentPageQuestions.forEach(questionNumber => {
-            if (!shouldShowQuestion(questionNumber)) return;
-            
             const input = document.querySelector(`[name="q_${questionNumber}"]`);
             if (!input) return;
             
@@ -182,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (answer !== null && answer.trim() !== '') {
                 answers[questionNumber] = answer;
             } else {
-                delete answers[questionNumber]; // Remove if empty
+                delete answers[questionNumber];
             }
         });
     }
@@ -192,10 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
         saveCurrentPageAnswers();
 
         if (currentPageIndex < pageGroups.length - 1) {
-            visitedPages.push(currentPageIndex); // Add current page to history before moving
+            visitedPages.push(currentPageIndex);
             renderPage(currentPageIndex + 1);
         } else {
-            // This is the "Finish" button action
             submitForm();
         }
     });
@@ -210,7 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function mapAnswersToPdfData() {
         const pdfData = {};
     
-        // First pass: Map all regular answers
         for (const qNum in answers) {
             const question = questionMap.get(qNum);
             const answer = answers[qNum];
@@ -232,21 +246,18 @@ document.addEventListener('DOMContentLoaded', () => {
         pdfData['former_residence_clause'] = answers['7'] ? `, formerly of ${answers['7']}` : '';
         pdfData['former_occupation_clause'] = answers['9'] ? `, formerly ${answers['9']}` : '';
 
-        // Special logic for spouse/partner question (question 10) and will date (question 6)
+        // Special logic for spouse/partner question and will date
         const isSpousePartner = answers['16'] === 'Yes';
         const dateOfWill = answers['12'];
         
         if (!isSpousePartner) {
-            // Hide paragraph 6 entirely
             pdfData['PARAGRAPH_6'] = '';
         } else {
-            // Show paragraph 6 with appropriate statement
             if (dateOfWill) {
                 const willDate = new Date(dateOfWill);
                 const cutoffDate = new Date('2007-11-01');
                 
                 if (willDate < cutoffDate) {
-                    // Show Statement B
                     pdfData['PARAGRAPH_6'] = `
                     <div class="paragraph">
                     <span class="paragraph-number">6.</span>
@@ -254,7 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
                 } else {
-                    // Show Statement A
                     pdfData['PARAGRAPH_6'] = `
                     <div class="paragraph">
                     <span class="paragraph-number">6.</span>
@@ -267,10 +277,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!isSpousePartner) {
             pdfData['PARAGRAPH_6'] = '';
-            pdfData['PARA_7_NUMBER'] = '6'; // Renumber para 7 to 6
+            pdfData['PARA_7_NUMBER'] = '6';
         } else {
-            // ... existing Statement A/B logic ...
-            pdfData['PARA_7_NUMBER'] = '7'; // Keep as 7
+            pdfData['PARA_7_NUMBER'] = '7';
         }
                 
         return pdfData;
@@ -288,7 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (!response.ok) throw new Error('Submission failed');
             
-            // Handle PDF download
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -300,7 +308,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
             
-            // On success, show completion message
             formContainer.style.display = 'block';
             document.getElementById("question-section").style.display = "none";
             document.getElementById("navigation-buttons").style.display = "none";
