@@ -135,7 +135,61 @@
         "notes": ""
     },
     {
-        "question_number": "16",
+      "question_number": "16",
+      "question_text": "Has the executor's name changed since the will was drafted?",
+      "response_type": "radio: Yes/No",
+      "validation": "non-empty",
+      "conditional_logic": "none",
+      "maps_to_pdf": "",
+      "notes": "Triggers question 17 if Yes"
+      },
+      {
+      "question_number": "17",
+      "question_text": "What was the executor's former name as stated in the will?",
+      "response_type": "text",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 16 = Yes",
+      "maps_to_pdf": "executor_former_name",
+      "notes": ""
+      },
+      {
+      "question_number": "18",
+      "question_text": "Has the executor's residence changed since the will was drafted?",
+      "response_type": "radio: Yes/No",
+      "validation": "non-empty",
+      "conditional_logic": "none",
+      "maps_to_pdf": "",
+      "notes": "Triggers question 19 if Yes"
+      },
+      {
+      "question_number": "19",
+      "question_text": "What was the executor's former residence as stated in the will?",
+      "response_type": "text",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 18 = Yes",
+      "maps_to_pdf": "executor_former_residence",
+      "notes": ""
+      },
+      {
+      "question_number": "20",
+      "question_text": "Has the executor's occupation changed since the will was drafted?",
+      "response_type": "radio: Yes/No",
+      "validation": "non-empty",
+      "conditional_logic": "none",
+      "maps_to_pdf": "",
+      "notes": "Triggers question 21 if Yes"
+      },
+      {
+      "question_number": "21",
+      "question_text": "What was the executor's former occupation as stated in the will?",
+      "response_type": "text",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 20 = Yes",
+      "maps_to_pdf": "executor_former_occupation",
+      "notes": ""
+      },
+    {
+        "question_number": "22",
         "question_text": "Is the applicant the spouse or civil union partner of the deceased?",
         "response_type": "radio:Yes/No",
         "validation": "non-empty", 

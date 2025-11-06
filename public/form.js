@@ -38,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ['1', '2', '3'],
         ['4', '5', '6', '7', '8', '9'],
         ['10', '11', '12'],
-        ['13', '14', '15', '16']
+        ['13', '14', '15',], 
+        ['16', '17', '18', '19', '20', '21'],
+        ['22']
     ];
 
     // --- Main Initialization ---
@@ -66,7 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const dependencies = {
             '4': '5',
             '6': '7',
-            '8': '9'
+            '8': '9',
+            '16': '17',
+            '18': '19',
+            '20': '21'
         };
         
         const dependentQ = dependencies[triggerQuestionNumber];
@@ -165,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         responseAreaEl.appendChild(pageContainer);
         
         // Apply conditional field states after rendering
-        ['4', '6', '8'].forEach(qNum => {
+        ['4', '6', '8', '16', '18', '20'].forEach(qNum => {
             handleConditionalFields(qNum);
         });
         
@@ -245,9 +250,12 @@ document.addEventListener('DOMContentLoaded', () => {
         pdfData['former_name_clause'] = answers['5'] ? `, formerly known as ${answers['5']}` : '';
         pdfData['former_residence_clause'] = answers['7'] ? `, formerly of ${answers['7']}` : '';
         pdfData['former_occupation_clause'] = answers['9'] ? `, formerly ${answers['9']}` : '';
+        pdfData['executor_former_name_clause'] = answers['17'] ? `, formerly known as ${answers['17']}` : '';
+        pdfData['executor_former_residence_clause'] = answers['19'] ? `, formerly of ${answers['19']}` : '';
+        pdfData['executor_former_occupation_clause'] = answers['21'] ? `, formerly ${answers['21']}` : '';
 
         // Special logic for spouse/partner question and will date
-        const isSpousePartner = answers['16'] === 'Yes';
+        const isSpousePartner = answers['22'] === 'Yes';
         const dateOfWill = answers['12'];
         
         if (!isSpousePartner) {
