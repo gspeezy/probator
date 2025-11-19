@@ -196,5 +196,95 @@
         "conditional_logic": "none",
         "maps_to_pdf": "",
         "notes": ""
-    }
+    },
+    {
+      "question_number": "23",
+      "question_text": "How many executors are named in the will?",
+      "response_type": "radio:One executor/Two executors",
+      "validation": "non-empty",
+      "conditional_logic": "none",
+      "maps_to_pdf": "executor_count",
+      "notes": "This determines whether second executor questions appear"
+  },
+  {
+      "question_number": "24",
+      "question_text": "What is the second-named executor's correct full legal name?",
+      "response_type": "text",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 23 = Two executors",
+      "maps_to_pdf": "executor2_fullname",
+      "notes": ""
+  },
+  {
+      "question_number": "25",
+      "question_text": "In what town/city does the second-named executor live?",
+      "response_type": "text",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 23 = Two executors",
+      "maps_to_pdf": "executor2_residence",
+      "notes": ""
+  },
+  {
+      "question_number": "26",
+      "question_text": "What is the second-named executor's occupation?",
+      "response_type": "text",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 23 = Two executors",
+      "maps_to_pdf": "executor2_occupation",
+      "notes": ""
+  },
+  {
+      "question_number": "27",
+      "question_text": "Has the second-named executor's name changed since the will was drafted?",
+      "response_type": "radio:Yes/No",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 23 = Two executors",
+      "maps_to_pdf": "",
+      "notes": "Triggers question 28 if Yes"
+  },
+  {
+      "question_number": "28",
+      "question_text": "What was the second-named executor's former name as stated in the will?",
+      "response_type": "text",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 27 = Yes",
+      "maps_to_pdf": "executor2_former_name",
+      "notes": ""
+  },
+  {
+      "question_number": "29",
+      "question_text": "Has the second-named executor's residence changed since the will was drafted?",
+      "response_type": "radio:Yes/No",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 23 = Two executors",
+      "maps_to_pdf": "",
+      "notes": "Triggers question 30 if Yes"
+  },
+  {
+      "question_number": "30",
+      "question_text": "What was the second-named executor's former residence as stated in the will?",
+      "response_type": "text",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 29 = Yes",
+      "maps_to_pdf": "executor2_former_residence",
+      "notes": ""
+  },
+  {
+      "question_number": "31",
+      "question_text": "Has the second-named executor's occupation changed since the will was drafted?",
+      "response_type": "radio:Yes/No",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 23 = Two executors",
+      "maps_to_pdf": "",
+      "notes": "Triggers question 32 if Yes"
+  },
+  {
+      "question_number": "32",
+      "question_text": "What was the second-named executor's former occupation as stated in the will?",
+      "response_type": "text",
+      "validation": "non-empty",
+      "conditional_logic": "show_if: 31 = Yes",
+      "maps_to_pdf": "executor2_former_occupation",
+      "notes": ""
+  }
 ]

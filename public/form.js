@@ -38,9 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ['1', '2', '3'],
         ['4', '5', '6', '7', '8', '9'],
         ['10', '11', '12'],
-        ['13', '14', '15',], 
+        ['13', '14', '15'], 
         ['16', '17', '18', '19', '20', '21'],
-        ['22']
+        ['22'], // Spouse question alone
+        ['23', '24', '25', '26', '27', '28', '29', '30', '31', '32'] // Executor count + all executor2 questions
     ];
 
     // --- Main Initialization ---
@@ -71,7 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
             '8': '9',
             '16': '17',
             '18': '19',
-            '20': '21'
+            '20': '21',
+            '27': '28',  
+            '29': '30',
+            '31': '32'
         };
         
         const dependentQ = dependencies[triggerQuestionNumber];
@@ -95,6 +99,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 dependentInput.style.cursor = 'text';
                 dependentInput.title = '';
             }
+        }
+    }
+
+    // --- Show/Hide Conditional Questions for Executor 2 ---
+    function handleShowHideExecutor2Fields(triggerQuestionNumber) {
+        // Only process if this is the executor count question
+        if (triggerQuestionNumber !== '23') return;
+        
+        const triggerAnswer = document.querySelector(`[name="q_${triggerQuestionNumber}"]:checked`)?.value;
+        
+        // All executor2 questions (including their sub-conditionals)
+        const executor2Questions = ['24', '25', '26', '27', '28', '29', '30', '31', '32'];
+        
+        executor2Questions.forEach(qNum => {
+            const questionContainer = document.getElementById(`q_${qNum}`)?.closest('.question-container');
+            
+            if (questionContainer) {
+                if (triggerAnswer === 'Two executors') {
+                    questionContainer.style.display = 'block';
+                } else {
+                    questionContainer.style.display = 'none';
+                    // Clear the answer when hiding
+                    const input = document.getElementById(`q_${qNum}`);
+                    if (input) {
+                        if (input.type === 'radio') {
+                            document.querySelectorAll(`[name="q_${qNum}"]`).forEach(radio => {
+                                radio.checked = false;
+                            });
+                        } else {
+                            input.value = '';
+                        }
+                        delete answers[qNum];
+                    }
+                }
+            }
+        });
+        
+        // Also handle the nested conditionals for executor2 (27->28, 29->30, 31->32)
+        if (triggerAnswer === 'Two executors') {
+            handleConditionalFields('27');
+            handleConditionalFields('29');
+            handleConditionalFields('31');
         }
     }
 
@@ -152,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         radio.addEventListener('change', () => {
                             handleConditionalFields(question.question_number);
+                            handleShowHideExecutor2Fields(question.question_number);
                         });
                         
                         label.appendChild(radio);
@@ -170,9 +217,12 @@ document.addEventListener('DOMContentLoaded', () => {
         responseAreaEl.appendChild(pageContainer);
         
         // Apply conditional field states after rendering
-        ['4', '6', '8', '16', '18', '20'].forEach(qNum => {
+        ['4', '6', '8', '16', '18', '20', '27', '29', '31'].forEach(qNum => {
             handleConditionalFields(qNum);
         });
+
+        // Apply show/hide states for executor2 questions
+        handleShowHideExecutor2Fields('23');
         
         updateNavigation();
     }
@@ -253,6 +303,9 @@ document.addEventListener('DOMContentLoaded', () => {
         pdfData['executor_former_name_clause'] = answers['17'] ? `, formerly known as ${answers['17']}` : '';
         pdfData['executor_former_residence_clause'] = answers['19'] ? `, formerly of ${answers['19']}` : '';
         pdfData['executor_former_occupation_clause'] = answers['21'] ? `, formerly ${answers['21']}` : '';
+        pdfData['executor2_former_name_clause'] = answers['28'] ? `, formerly known as ${answers['28']}` : '';
+        pdfData['executor2_former_residence_clause'] = answers['30'] ? `, formerly of ${answers['30']}` : '';
+        pdfData['executor2_former_occupation_clause'] = answers['32'] ? `, formerly ${answers['32']}` : '';
 
         // Special logic for spouse/partner question and will date
         const isSpousePartner = answers['22'] === 'Yes';
