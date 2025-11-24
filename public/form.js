@@ -113,7 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const executor2Questions = ['24', '25', '26', '27', '28', '29', '30', '31', '32'];
         
         executor2Questions.forEach(qNum => {
-            const questionContainer = document.getElementById(`q_${qNum}`)?.closest('.question-container');
+            // For radio buttons, use querySelector with name attribute; for text inputs, use getElementById
+            let element = document.getElementById(`q_${qNum}`);
+            if (!element) {
+                element = document.querySelector(`[name="q_${qNum}"]`);
+            }
+            
+            const questionContainer = element?.closest('.question-container');
             
             if (questionContainer) {
                 if (triggerAnswer === 'Two executors') {
@@ -121,14 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     questionContainer.style.display = 'none';
                     // Clear the answer when hiding
-                    const input = document.getElementById(`q_${qNum}`);
-                    if (input) {
-                        if (input.type === 'radio') {
+                    if (element) {
+                        if (element.type === 'radio') {
                             document.querySelectorAll(`[name="q_${qNum}"]`).forEach(radio => {
                                 radio.checked = false;
                             });
                         } else {
-                            input.value = '';
+                            element.value = '';
                         }
                         delete answers[qNum];
                     }
@@ -219,6 +224,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // Apply conditional field states after rendering
         ['4', '6', '8', '16', '18', '20', '27', '29', '31'].forEach(qNum => {
             handleConditionalFields(qNum);
+        });
+
+        // Initially hide all executor2 questions on page load
+        ['24', '25', '26', '27', '28', '29', '30', '31', '32'].forEach(qNum => {
+            // For radio buttons, use querySelector with name attribute; for text inputs, use getElementById
+            let element = document.getElementById(`q_${qNum}`);
+            if (!element) {
+                element = document.querySelector(`[name="q_${qNum}"]`);
+            }
+            
+            const questionContainer = element?.closest('.question-container');
+            if (questionContainer) {
+                questionContainer.style.display = 'none';
+            }
         });
 
         // Apply show/hide states for executor2 questions
