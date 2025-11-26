@@ -361,7 +361,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             pdfData['PARA_7_NUMBER'] = '7';
         }
-                
+           
+        // Add flag for single vs dual executor 
+        pdfData['isSingleExecutor'] = answers['23'] === 'One executor';
+
         return pdfData;
     }
 
