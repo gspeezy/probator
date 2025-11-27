@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            font-family: 'Times New Roman', serif; 
+            margin: 2cm; 
+            line-height: 1.6;
+            font-size: 12pt;
+        }
+        
+        /* NEW: Probate form container */
+        .probate-form {
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 120px);
+            page-break-inside: avoid;
+        }
+
+        /* MODIFIED: Lawyer details - added flex positioning */
+        .lawyer-details {
+            flex-shrink: 0;
+            margin-top: auto;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            text-align: center;
+            font-size: 12pt;    
+        }
+        
+        .header {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .court-details {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .estate-title {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .paragraph {
+            margin-bottom: 20px;
+            text-align: justify;
+            text-indent: 0;
+        }
+        .paragraph-number {
+            display: inline-block;
+            width: 30px;
+            font-weight: bold;
+        }
+        .signature-section {
+            margin-top: 60px;
+        }
+        .signature-line {
+            border-bottom: 1px solid black;
+            width: 200px;
+            display: inline-block;
+        }
+        .date-fields {
+            margin: 40px 0;
+        }
+        .date-field {
+            border-bottom: 1px solid black;
+            width: 100px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .page-two {
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1 -->
+        <div class="probate-form">
+            <div class="header">
+                IN THE HIGH COURT OF NEW ZEALAND
+            </div>
+            
+            <div class="court-details">
+                Wellington REGISTRY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
+            </div>
+            
+            <div class="estate-title" style="text-align: left;">
+                IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}}{{former_name_clause}} of {{deceased_residence}}{{former_residence_clause}}, {{deceased_occupation}}{{former_occupation_clause}}, Deceased
+            </div>
+            
+            <!-- MODIFIED: Replaced fixed margins with flexible div -->
+            <div style="flex: 1; min-height: 150px;"></div>
+            
+            <div style="text-align: center; border-top: 1px solid black; border-bottom: 1px solid black; margin: 20px 0; padding: 10px 0;">
+                <strong>PROBATE IN COMMON FORM</strong>
+            </div>
+            
+            <!-- MODIFIED: Replaced fixed margins with flexible div -->
+            <div style="flex: 2; min-height: 200px;"></div>
+            
+            <div style="border-bottom: 1px solid black; margin: 20px 0; padding-bottom: 5px;">
+                &nbsp;
+            </div>
+        </div>
+        
+        <!-- MOVED: Lawyer details (minimal changes to existing styles) -->
+        <div class="lawyer-details">
+            Firm Name<br>
+            PO Box and DX Numbers<br>
+            Telephone and Fax Numbers<br>
+            Name of person handling the matter
+        </div>
+    </div>
+    
+    <div style="page-break-after: always;"></div>
+    
+    <!-- Page 2 -->
+    <div class="page-two">
+        <div class="header" style="text-align: left;">
+            IN THE HIGH COURT OF NEW ZEALAND
+        </div>
+        
+        <div class="court-details" style="text-align: left;">
+            Wellington REGISTRY<br>
+        </div>
+        
+        <div class="estate-title" style="text-align: left;">
+            IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}}{{former_name_clause}} of {{deceased_residence}}{{former_residence_clause}}, {{deceased_occupation}}{{former_occupation_clause}}, Deceased
+        </div>
+        
+        <div class="paragraph">
+            <span class="paragraph-number">1.</span>
+            The deceased, {{deceased_fullname}}, died at {{placeofdeath}}, New Zealand on or about the {{dateofdeath}} leaving a will. A copy is attached.
+        </div>
+        
+        <div class="paragraph">
+            <span class="paragraph-number">2.</span>
+            The will was proved before the Registrar/Senior Deputy Registrar in chambers acting under rule 27.14 of the High Court Rules and probate of the will was granted today.
+        </div>
+        
+        <!-- PARAGRAPH 3 - DUAL EXECUTORS VERSION -->
+        <div class="paragraph">
+            <span class="paragraph-number">3.</span>
+            This probate document appoints {{executor1_fullname}}{{executor_former_name_clause}} of {{executor1_residence}}{{executor_former_residence_clause}}, {{executor1_occupation}}{{executor_former_occupation_clause}}, and {{executor2_fullname}}{{executor2_former_name_clause}} of {{executor2_residence}}{{executor2_former_residence_clause}}, {{executor2_occupation}}{{executor2_former_occupation_clause}}, the executors named in the will as the administrators of the deceased's estate.
+        </div>
+        
+        <div class="date-fields">
+            DATED this <span class="date-field"></span> day of <span class="date-field"></span> <span id="current-year"></span>
+        </div>
+        
+        <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        </script>
+        
+        <div class="signature-section">
+            <span class="signature-line"></span><br>
+            (Deputy) Registrar
+        </div>
+    </div>
+</body>
+</html>

@@ -70,45 +70,46 @@
             margin: 0 10px;
         }
         .page-two {
-            margin-top: 10px;
+            margin-top: 60px;
         }
     </style>
 </head>
 
 <body>
     <!-- PAGE 1 -->
-    <div class="probate-form">
-        <div class="header">
-            IN THE HIGH COURT OF NEW ZEALAND
-        </div>
-        
-        <div class="court-details">
-            Wellington REGISTRY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
-        </div>
-        
-        <div class="estate-title" style="text-align: left;">
-            IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}}{{former_name_clause}} of {{deceased_residence}}{{former_residence_clause}}, {{deceased_occupation}}{{former_occupation_clause}}, Deceased
-        </div>
-        
-        <!-- MODIFIED: Replaced fixed margins with flexible div -->
-        <div style="flex: 1; min-height: 150px;"></div>
-        
-        <div style="text-align: center; border-top: 1px solid black; border-bottom: 1px solid black; margin: 20px 0; padding: 10px 0;">
-            <strong>APPLICATION WITHOUT NOTICE FOR OBTAINING GRANT OF PROBATE</strong>
-        </div>
-        
-        <!-- MODIFIED: Replaced fixed margins with flexible div -->
-        <div style="flex: 2; min-height: 190px;"></div>
-        
-        <div style="border-bottom: 1px solid black; margin: 20px 0; padding-bottom: 5px;">
-            &nbsp;
-        </div>
+        <div class="probate-form">
+            <div class="header">
+                IN THE HIGH COURT OF NEW ZEALAND
+            </div>
+            
+            <div class="court-details">
+                Wellington REGISTRY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CIV.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-2025
+            </div>
+            
+            <div class="estate-title" style="text-align: left;">
+                IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}}{{former_name_clause}} of {{deceased_residence}}{{former_residence_clause}}, {{deceased_occupation}}{{former_occupation_clause}}, Deceased
+            </div>
+            
+            <!-- MODIFIED: Replaced fixed margins with flexible div -->
+            <div style="flex: 1; min-height: 150px;"></div>
+            
+            <div style="text-align: center; border-top: 1px solid black; border-bottom: 1px solid black; margin: 20px 0; padding: 10px 0;">
+                <strong>AFFIDAVIT FOR OBTAINING GRANT OF PROBATE</strong>
+            </div>
+            
+            <!-- MODIFIED: Replaced fixed margins with flexible div -->
+            <div style="flex: 2; min-height: 290px;"></div>
+            
+            <div style="border-bottom: 1px solid black; margin: 20px 0; padding-bottom: 5px;">
+                &nbsp;
+            </div>
 
-        <div class="lawyer-details">
-            Firm Name<br>
-            PO Box and DX Numbers<br>
-            Telephone and Fax Numbers<br>
-            Name of person handling the matter
+            <div class="lawyer-details">
+              Firm Name<br>
+              PO Box and DX Numbers<br>
+              Telephone and Fax Numbers<br>
+              Name of person handling the matter
+          </div>
         </div>
     </div>
     
@@ -126,72 +127,76 @@
         
         <div class="estate-title" style="text-align: left;">
             IN THE ESTATE of&nbsp;&nbsp;&nbsp;&nbsp;{{deceased_fullname}}{{former_name_clause}} of {{deceased_residence}}{{former_residence_clause}}, {{deceased_occupation}}{{former_occupation_clause}}, Deceased
-        </div>
-
+           </div>
+           
+        <!-- OPENING PARAGRAPH - DUAL EXECUTORS VERSION -->
         <div class="paragraph">
-            To the Registrar of the High Court at Wellington<br>
-            This document notifies you that–
+            We, {{executor1_fullname}}{{executor_former_name_clause}}, of {{executor1_residence}}{{executor_former_residence_clause}}, {{executor1_occupation}}{{executor_former_occupation_clause}}, and {{executor2_fullname}}{{executor2_former_name_clause}}, of {{executor2_residence}}{{executor2_former_residence_clause}}, {{executor2_occupation}}{{executor2_former_occupation_clause}}, swear—
         </div>
 
-        <!-- PARAGRAPH 1 - DUAL EXECUTORS VERSION -->
         <div class="paragraph">
             <span class="paragraph-number">1.</span>
-            The applicants {{executor1_fullname}}{{executor1_former_name_clause}}, of {{executor1_residence}}{{executor1_former_residence_clause}}, {{executor1_occupation}}{{executor1_former_occupation_clause}}, and {{executor2_fullname}}{{executor2_former_name_clause}}, of {{executor2_residence}}{{executor2_former_residence_clause}}, {{executor2_occupation}}{{executor2_former_occupation_clause}}, apply for an order that probate of the will of the deceased be granted to the applicants.
+            The deceased, {{deceased_fullname}}, whom we knew, died at {{placeofdeath}}, New Zealand on or about the {{dateofdeath}}.
         </div>
         
-        <!-- PARAGRAPH 2 - DUAL EXECUTORS VERSION -->
         <div class="paragraph">
             <span class="paragraph-number">2.</span>
-            The grounds on which the order is sought are that the applicants are the executors named in the will of the deceased*. 
+            We attended the deceased's funeral.
         </div>
         
         <div class="paragraph">
             <span class="paragraph-number">3.</span>
-            The application is made in reliance on section 5 of the Administration Act 1969 and rule 27.4 of the High Court Rules 2016.
+            When the deceased died, they resided at {{deceased_residence}}.
         </div>
         
-        <!-- PARAGRAPH 4 - DUAL EXECUTORS VERSION -->
         <div class="paragraph">
             <span class="paragraph-number">4.</span>
-            The application is made without notice to any other person on the following grounds:<br>
-            (a) the application affects only the applicants:<br>
-            (b) other persons who have an equal or higher entitlement to apply have been given notice of or have consented to the application:<br>
-            (c) rule 27.5 of the High Court Rules 2016 applies and the application contains proof of each matter stated in rule 27.5(3) of the High Court Rules 2016:<br>
-            (d) the application relates to a routine matter.
+            We believe the document dated {{dateofwill}} and marked "    " now produced and shown to us is the deceased's last will.
         </div>
 
+        <!-- PARAGRAPH 5 - DUAL EXECUTORS VERSION -->
         <div class="paragraph">
-            Date:
+            <span class="paragraph-number">5.</span>
+            We are the executors named in the will.
         </div>
-        
+
+        {{PARAGRAPH_6}}
+
+        <!-- PARAGRAPH 7 - DUAL EXECUTORS VERSION -->
+        <div class="paragraph">
+            <span class="paragraph-number">{{PARA_7_NUMBER}}.</span>
+            We will faithfully execute the will of which probate is granted in accordance with the law. If the court requires us to, we will file in the court and verify by affidavit—
+            <br>(a) an accurate inventory of the deceased's estate; and
+            <br>(b) an account of the deceased's estate that—
+            <br><span style="display:inline-block; padding-left:2em; text-indent:-1em;">(i) is accurate; and</span>
+            <br><span style="display:inline-block; padding-left:2em; text-indent:-1em;">(ii) states the dates and details of all receipts and disbursements; and</span>
+            <br><span style="display:inline-block; padding-left:2em; text-indent:-1em;">(iii) states which of the receipts and disbursements were on capital account and which were on revenue account.</span>
+        </div>
+
         <!-- SIGNATURE SECTION - DUAL EXECUTORS VERSION -->
-        <div class="paragraph">
-            First Applicant Signature:
-        </div>
-        
-        <div class="paragraph">
-            Name of signatory:
+        <p><strong>
+            {{executor1_fullname}},<br>
+            {{executor1_occupation}},<br>
+            of {{executor1_residence}}<br>
+
+            <div class="signature-line"></div>
+        </strong></p>
+
+        <p><strong>
+            {{executor2_fullname}},<br>
+            {{executor2_occupation}},<br>
+            of {{executor2_residence}}<br>
+
+            <div class="signature-line"></div>
+        </strong></p>
+
+        <div class="signature-block">
+            Sworn at <br><br>
+            before me:
         </div>
 
-        <div class="paragraph">
-            Second Applicant Signature:
-        </div>
-        
-        <div class="paragraph">
-            Name of signatory:
-        </div>
-        
-        <div class="paragraph">
-            This application is filed by: Probator Probate Services
-        </div>
-        
-        <div class="paragraph">
-            Telephone and email address:
-        </div>
-        
-        <div class="paragraph">
-            Physical street address:
-        </div>
-    </div>
+        <div class="signature-line"></div>
+
+        <div>[A Solicitor of the High Court of New Zealand / Justice of the Peace]</div>  
 </body>
 </html>
