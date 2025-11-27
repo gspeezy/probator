@@ -15,31 +15,34 @@ function replacePlaceholders(htmlContent, data) {
 
 async function generateProbatePDF(data) {
     try {
+        // Determine template suffix based on executor count
+        const templateSuffix = data.isSingleExecutor ? '' : '-dual';
+
         // Centralised list of templates in the correct order
-        const templates = [
-            'PR1AA-template.html',
-            'PR1-template.html',
-            'PR7-template.html',
-            'exhibit_notes-template.html'
+        const templateFiles = [
+            `PR1AA${templateSuffix}-template.html`,
+            `PR1${templateSuffix}-template.html`,
+            `PR7${templateSuffix}-template.html`,
+            `exhibit_notes${templateSuffix}-template.html`
         ];
-
+        
         let combinedHtml = '';
-
-        for (const file of templates) {
+        
+        for (const file of templateFiles) {
             const templatePath = path.join(__dirname, 'templates', file);
             let htmlContent = await fs.readFile(templatePath, 'utf-8');
             htmlContent = replacePlaceholders(htmlContent, data);
             combinedHtml += htmlContent + '<div style="page-break-after: always;"></div>';
         }
-
+        
         const browser = await puppeteer.launch({
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
-
+        
         const page = await browser.newPage();
         await page.setContent(combinedHtml, { waitUntil: 'networkidle0' });
-
+        
         const pdfBuffer = await page.pdf({
             format: 'A4',
             printBackground: true,
@@ -50,10 +53,10 @@ async function generateProbatePDF(data) {
                 left: '20mm'
             }
         });
-
+        
         await browser.close();
         return pdfBuffer;
-
+        
     } catch (err) {
         console.error('Error generating probate PDF:', err);
         throw err;
