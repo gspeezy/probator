@@ -362,6 +362,32 @@ document.addEventListener('DOMContentLoaded', () => {
             pdfData['PARA_7_NUMBER'] = '7';
         }
            
+        // Dual executor version of PARAGRAPH_6
+        if (!isSpousePartner) {
+            pdfData['PARAGRAPH_6_DUAL'] = '';
+        } else {
+            if (dateOfWill) {
+                const willDate = new Date(dateOfWill);
+                const cutoffDate = new Date('2007-11-01');
+                
+                if (willDate < cutoffDate) {
+                    pdfData['PARAGRAPH_6_DUAL'] = `
+                        <div class="paragraph">
+                        <span class="paragraph-number">6.</span>
+                        The deceased's will was made before 1 November 2007. I, ${pdfData['executor1_fullname']}, am the deceased's surviving spouse. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for the dissolution of our marriage.
+                        </div>
+                    `;
+                } else {
+                    pdfData['PARAGRAPH_6_DUAL'] = `
+                        <div class="paragraph">
+                        <span class="paragraph-number">6.</span>
+                        The deceased's will was made on or after 1 November 2007. I, ${pdfData['executor1_fullname']}, am the deceased's surviving spouse/surviving civil union partner. When the deceased died, no order, decree, or enactment was in force between the deceased and myself providing for our separation or the dissolution of our marriage/civil union.
+                        </div>
+                    `;
+                }
+            }
+        }
+
         // Add flag for single vs dual executor 
         pdfData['isSingleExecutor'] = answers['23'] === 'One executor';
 
