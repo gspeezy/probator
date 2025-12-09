@@ -190,7 +190,7 @@
       },
     {
         "question_number": "22",
-        "question_text": "Is the applicant the spouse or civil union partner of the deceased?",
+        "question_text": "Is the executor the spouse or civil union partner of the deceased?",
         "response_type": "radio:Yes/No",
         "validation": "non-empty", 
         "conditional_logic": "none",
