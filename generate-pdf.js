@@ -63,7 +63,7 @@ async function generateProbatePDF(data) {
         });
         
         await browser.close();
-        return pdfBuffer;
+        return Buffer.from(pdfBuffer);
         
     } catch (err) {
         console.error('Error generating probate PDF:', err);
