@@ -36,12 +36,14 @@ async function generateProbatePDF(data) {
         }
         
         const browser = await puppeteer.launch({
-            headless: true,
+            headless: 'new',
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
                 '--disable-gpu',
+                 '--disable-web-security',
+                '--disable-features=IsolateOrigins,site-per-process'
             ]
         });
         
@@ -51,6 +53,7 @@ async function generateProbatePDF(data) {
         const pdfBuffer = await page.pdf({
             format: 'A4',
             printBackground: true,
+            preferCSSPageSize: false,
             margin: {
                 top: '20mm',
                 right: '20mm',
