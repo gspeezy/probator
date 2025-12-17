@@ -43,6 +43,11 @@ app.post('/api/submit', async (req, res) => {
     try {
         // Generate PDF
         const pdfBuffer = await generateProbatePDF(finalData);
+
+        console.log('PDF generated successfully');
+        console.log('Buffer length:', pdfBuffer.length);
+        console.log('Buffer is Buffer?', Buffer.isBuffer(pdfBuffer));
+        console.log('First 4 bytes (should be %PDF):', pdfBuffer.toString('utf8', 0, 4));
         
         // Set response headers for PDF download
         res.setHeader('Content-Type', 'application/pdf');
