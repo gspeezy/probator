@@ -397,6 +397,51 @@ document.addEventListener('DOMContentLoaded', () => {
     async function submitForm() {
         const finalData = mapAnswersToPdfData();
         
+        // Show loading screen
+        formContainer.style.display = 'none';
+        document.getElementById("question-section").style.display = "none";
+        document.getElementById("navigation-buttons").style.display = "none";
+        document.getElementById("progress-bar-container").style.display = "none";
+        
+        // Create and show loading message
+        const loadingDiv = document.createElement('div');
+        loadingDiv.id = 'loading-screen';
+        loadingDiv.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        `;
+        loadingDiv.innerHTML = `
+            <div style="text-align: center;">
+                <div class="spinner" style="
+                    border: 4px solid #f3f3f3;
+                    border-top: 4px solid #3498db;
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    animation: spin 1s linear infinite;
+                    margin: 0 auto 20px;
+                "></div>
+                <h2 style="color: #2c3e50; margin-bottom: 10px;">Generating Your Probate Forms</h2>
+                <p style="color: #7f8c8d;">This may take up to 15 seconds. Please don't close this window.</p>
+            </div>
+            <style>
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            </style>
+        `;
+        document.body.appendChild(loadingDiv);
+        
         try {
             const response = await fetch('/api/submit', {
                 method: 'POST',
@@ -417,15 +462,27 @@ document.addEventListener('DOMContentLoaded', () => {
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
             
+            // Remove loading screen
+            document.body.removeChild(loadingDiv);
+            
+            // Show completion message
             formContainer.style.display = 'block';
-            document.getElementById("question-section").style.display = "none";
-            document.getElementById("navigation-buttons").style.display = "none";
-            document.getElementById("progress-bar-container").style.display = "none";
             completionMessage.style.display = 'block';
-
+    
         } catch (error) {
             console.error('Error submitting form:', error);
+            
+            // Remove loading screen
+            document.body.removeChild(loadingDiv);
+            
+            // Show error message
             alert('There was an error submitting your form. Please try again.');
+            
+            // Show form again so user can retry
+            formContainer.style.display = 'block';
+            document.getElementById("question-section").style.display = "block";
+            document.getElementById("navigation-buttons").style.display = "flex";
+            document.getElementById("progress-bar-container").style.display = "block";
         }
     }
 
