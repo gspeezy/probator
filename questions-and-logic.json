@@ -19,7 +19,7 @@
     },
     {
         "question_number": "3",
-        "question_text": "Please confirm the deceased's occupation at time of death? (if retired, state: retired)",
+        "question_text": "Please confirm the deceased's occupation at time of death? (if retired, state: Retired)",
         "response_type": "text",
         "validation": "non-empty",
         "conditional_logic": "none",
