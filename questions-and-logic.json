@@ -286,5 +286,23 @@
       "conditional_logic": "show_if: 31 = Yes",
       "maps_to_pdf": "executor2_former_occupation",
       "notes": ""
-  }
+  },
+  {
+    "question_number": "33",
+    "question_text": "Please provide a contact phone number for at least one executor (Note: this information is required in case the Probate Registry needs to contact you. This website does NOT store or save any of the data you provide).",
+    "response_type": "text",
+    "validation": "non-empty",
+    "conditional_logic": "none",
+    "maps_to_pdf": "executor_phone_number",
+    "notes": ""
+    },
+    {
+    "question_number": "34",
+     "question_text": "Please provide an email address for at least one executor.",
+    "response_type": "text",
+     "validation": "non-empty",
+     "conditional_logic": "none",
+    "maps_to_pdf": "executor_email_address",
+    "notes": ""
+    }
 ]
